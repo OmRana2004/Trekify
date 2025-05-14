@@ -1,56 +1,90 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-const AdminLogin = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const navigate = useNavigate();
+interface Booking {
+  _id: string;
+  trekName: string;
+  fullName: string;
+  email: string;
+  phone: string;
+  persons: number;
+  date: string;
+  message: string;
+  createdAt: string;
+}
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
+const AdminDashboard: React.FC = () => {
+  const [bookings, setBookings] = useState<Booking[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-    // Simple hardcoded login check
-    if (username === "admin" && password === "admin123") {
-      localStorage.setItem("isAdmin", "true");
-      navigate("/admin/dashboard");
-    } else {
-      setError("Invalid username or password");
-    }
-  };
+  useEffect(() => {
+    const fetchBookings = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/bookings');
+        setBookings(response.data);
+        setLoading(false);
+      } catch (error) {
+        setError('Failed to fetch bookings');
+        setLoading(false);
+      }
+    };
+
+    fetchBookings();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-spin border-t-4 border-blue-600 w-16 h-16 border-solid rounded-full"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div className="text-center text-red-600">{error}</div>;
+  }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center text-gray-700">Admin Login</h2>
-        {error && <p className="text-red-500 text-sm mb-4 text-center">{error}</p>}
-        <form onSubmit={handleLogin} className="space-y-4">
-          <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500"
-          />
-          <button
-            type="submit"
-            className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition"
-          >
-            Login
-          </button>
-        </form>
-      </div>
+    <div className="p-8 bg-gradient-to-r from-indigo-100 via-indigo-200 to-indigo-300 rounded-xl shadow-2xl max-w-7xl mx-auto">
+      <h2 className="text-4xl font-semibold text-center mb-8 text-gray-800">Admin Dashboard</h2>
+      {bookings.length === 0 ? (
+        <div className="text-center text-lg text-gray-500">No bookings yet.</div>
+      ) : (
+        <div className="overflow-x-auto">
+          <table className="min-w-full bg-white shadow-lg rounded-lg border-collapse">
+            <thead className="bg-gradient-to-r from-blue-500 to-blue-600 text-white">
+              <tr>
+                <th className="py-4 px-6 text-left font-medium">Trek</th>
+                <th className="py-4 px-6 text-left font-medium">Name</th>
+                <th className="py-4 px-6 text-left font-medium">Email</th>
+                <th className="py-4 px-6 text-left font-medium">Phone</th>
+                <th className="py-4 px-6 text-left font-medium">Persons</th>
+                <th className="py-4 px-6 text-left font-medium">Date</th>
+                <th className="py-4 px-6 text-left font-medium">Message</th>
+              </tr>
+            </thead>
+            <tbody>
+              {bookings.map((booking) => (
+                <tr
+                  key={booking._id}
+                  className="transition-all duration-300 hover:shadow-lg hover:bg-indigo-50 hover:scale-105"
+                >
+                  <td className="py-4 px-6 text-gray-700">{booking.trekName}</td>
+                  <td className="py-4 px-6 text-gray-700">{booking.fullName}</td>
+                  <td className="py-4 px-6 text-gray-700">{booking.email}</td>
+                  <td className="py-4 px-6 text-gray-700">{booking.phone}</td>
+                  <td className="py-4 px-6 text-gray-700">{booking.persons}</td>
+                  <td className="py-4 px-6 text-gray-700">{booking.date}</td>
+                  <td className="py-4 px-6 text-gray-700">{booking.message}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 };
 
-export default AdminLogin;
+export default AdminDashboard;

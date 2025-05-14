@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 const AdminLogin = () => {
   const [username, setUsername] = useState("");
@@ -9,31 +8,22 @@ const AdminLogin = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     setLoading(true);
 
-    try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/admin/login`,
-        { username, password }
-      );
-
-      const { token } = response.data;
-
-      if (token) {
-        localStorage.setItem("token", token);
+    // Simulate login delay
+    setTimeout(() => {
+      if (username === "admin" && password === "admin123") {
+        localStorage.setItem("token", "dummy_token");
         localStorage.setItem("isAdmin", "true");
         navigate("/admin/dashboard");
       } else {
-        setError("Login failed: Invalid response from server.");
+        setError("Invalid username or password");
       }
-    } catch (err: any) {
-      setError(err.response?.data?.message || "Login failed: Server error.");
-    } finally {
       setLoading(false);
-    }
+    }, 800);
   };
 
   return (

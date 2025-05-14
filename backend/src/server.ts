@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import bookingRoutes from "./routes/bookingRoutes";
 import path from "path";
+import adminRoutes from "./routes/adminRoutes";
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ app.use(express.json());
 
 // Routes
 app.use("/api/bookings", bookingRoutes);
+app.use("/api/admin", adminRoutes);
 
 // ✅ Static files and React SPA route handler
 app.use(express.static(path.join(__dirname, "../public")));
