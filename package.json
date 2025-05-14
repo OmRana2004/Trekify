@@ -1,0 +1,22 @@
+{
+  "name": "trekify-fullstack",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install-all": "npm install --workspace backend && npm install --workspace frontend",
+    "dev": "concurrently \"npm run dev --workspace backend\" \"npm run dev --workspace frontend\"",
+    "build": "npm run build --workspace frontend",
+    "start": "npm run start --workspace backend"
+  },
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.6",
+    "@vercel/analytics": "^1.5.0"
+  }
+}
