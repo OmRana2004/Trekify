@@ -13,6 +13,8 @@ import gallery5 from "../assets/gallery/5.jpg";
 import gallery6 from "../assets/gallery/6.jpg";
 import gallery7 from "../assets/gallery/7.jpg";
 import gallery8 from "../assets/gallery/8.jpg";
+import gallery9 from "../assets/gallery/9.jpg";
+import gallery10 from "../assets/gallery/10.jpg";
 import nehru from "../assets/certificates/Nehru-Institute-of-Mountaineering-Logo-1-e1685940713654.webp";
 import imf from "../assets/certificates/imf.jpg";
 import UttarakhandLogo from "../assets/certificates/Uttarakhand-logo.jpg";
@@ -278,7 +280,7 @@ const Home = () => {
     </h2>
 
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 perspective-1000">
-      {[gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, gallery7, gallery8].map((img, idx) => (
+      {[gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, gallery7, gallery8, gallery9, gallery10].map((img, idx) => (
         <div
           key={idx}
           className="group relative w-full h-60 rounded-xl overflow-hidden shadow-xl transform-gpu transition-transform duration-500 hover:rotate-y-6 hover:scale-105"
