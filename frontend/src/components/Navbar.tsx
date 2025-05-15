@@ -4,26 +4,36 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false); // To hide navbar on scroll
-
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true); // For auto hide/show on scroll
+  const lastScrollY = useRef(0);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
-  // Scroll effect to hide navbar after scrolling
+  // Handle scroll to set background and hide/show navbar on scroll direction
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
+      const currentScrollY = window.scrollY;
+
+      // Background change after scrolling 50px
+      setIsScrolled(currentScrollY > 50);
+
+      // Auto hide navbar on scroll down, show on scroll up
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        // Scrolling down & past 100px: hide navbar
+        setShowNavbar(false);
       } else {
-        setIsScrolled(false);
+        // Scrolling up: show navbar
+        setShowNavbar(true);
       }
+
+      lastScrollY.current = currentScrollY;
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close dropdown if clicked outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -31,20 +41,24 @@ const Navbar = () => {
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
+    setIsDropdownOpen(false);
   };
 
   return (
     <nav
-      className={`fixed w-full z-50 top-0 left-0 py-4 px-6 transition-all duration-300 ${
-        isScrolled ? "bg-white-600/90" : "bg-green-600/70"
-      } backdrop-blur-lg shadow-lg`}
+      className={`fixed w-full z-50 top-0 left-0 py-4 px-6 transition-all duration-300 backdrop-blur-lg shadow-lg
+        ${
+          isScrolled ? "bg-white/90" : "bg-green-600/70"
+        }
+        ${showNavbar ? "translate-y-0" : "-translate-y-full"}
+        transform
+      `}
+      style={{ willChange: "transform" }}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
@@ -72,15 +86,21 @@ const Navbar = () => {
           >
             About
           </NavLink>
+
           <div className="relative" ref={dropdownRef}>
             <button
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              aria-expanded={isDropdownOpen}
+              aria-controls="treks-dropdown"
               className="text-lg font-medium text-white hover:text-yellow-300 transition"
             >
               Treks
             </button>
             {isDropdownOpen && (
-              <div className="absolute left-0 mt-2 w-52 bg-white shadow-xl rounded-xl overflow-hidden z-50">
+              <div
+                id="treks-dropdown"
+                className="absolute left-0 mt-2 w-52 bg-white shadow-xl rounded-xl overflow-hidden z-50"
+              >
                 <NavLink
                   to="/treks"
                   className="block px-5 py-3 text-gray-700 hover:bg-green-100 transition"
@@ -105,6 +125,7 @@ const Navbar = () => {
               </div>
             )}
           </div>
+
           <NavLink
             to="/contact"
             className="text-lg font-medium text-white hover:text-yellow-300 transition"
@@ -112,6 +133,7 @@ const Navbar = () => {
           >
             Contact
           </NavLink>
+
           <button className="ml-4 text-lg font-semibold text-green-700 bg-white hover:bg-green-100 px-6 py-3 rounded-full shadow-md transition transform hover:scale-105">
             Book Now
           </button>
@@ -121,7 +143,12 @@ const Navbar = () => {
         <div className="md:hidden">
           <button
             className="text-white hover:text-yellow-300"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle mobile menu"
+            aria-expanded={isMobileMenuOpen}
+            onClick={() => {
+              setIsMobileMenuOpen(!isMobileMenuOpen);
+              setIsDropdownOpen(false);
+            }}
           >
             <svg
               className="w-8 h-8"
@@ -143,7 +170,7 @@ const Navbar = () => {
 
       {/* Mobile Slide Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-green-600/80 backdrop-blur-md shadow-lg p-6 mt-2">
+        <div className="md:hidden bg-green-600/80 backdrop-blur-md shadow-lg p-6 mt-2 transition-opacity duration-300 ease-in-out">
           <NavLink
             to="/"
             className="block py-3 text-lg font-medium text-white hover:text-yellow-300 transition"

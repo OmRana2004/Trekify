@@ -8,6 +8,11 @@ import testimonialImg from "../assets/testimonials/trekker1.jpg";
 import gallery1 from "../assets/gallery/1.jpg";
 import gallery2 from "../assets/gallery/2.jpg";
 import gallery3 from "../assets/gallery/3.jpg";
+import gallery4 from "../assets/gallery/4.jpg";
+import gallery5 from "../assets/gallery/5.jpg";
+import gallery6 from "../assets/gallery/6.jpg";
+import gallery7 from "../assets/gallery/7.jpg";
+import gallery8 from "../assets/gallery/8.jpg";
 import nehru from "../assets/certificates/Nehru-Institute-of-Mountaineering-Logo-1-e1685940713654.webp";
 import imf from "../assets/certificates/imf.jpg";
 import UttarakhandLogo from "../assets/certificates/Uttarakhand-logo.jpg";
@@ -130,6 +135,56 @@ const Home = () => {
         </div>
       </section>
 
+     <section className="bg-gradient-to-r from-teal-50 to-white py-20 px-6 md:px-20" id="transform-lives">
+  <div className="max-w-7xl mx-auto text-center">
+    <h2 className="text-4xl md:text-5xl font-extrabold text-teal-900 mb-14 tracking-tight font-serif">
+      How Our Treks <span className="text-yellow-500">Transform Lives</span>
+    </h2>
+
+    <div className="grid gap-8 md:grid-cols-3">
+      {/* Self Connection */}
+      <div className="bg-white border border-teal-200 rounded-3xl shadow-lg hover:shadow-2xl transition-shadow duration-500 p-5 text-left max-w-md mx-auto md:mx-0">
+        <h3 className="text-xl md:text-2xl font-bold text-teal-700 mb-4 font-serif tracking-wide">
+          Connect to Yourself
+        </h3>
+        <p className="text-gray-700 leading-relaxed text-base md:text-lg font-medium">
+          Each experience on our treks is crafted to help you connect deeply with yourself.
+          Trekkers return with renewed perspectives, increased confidence, and heightened
+          self-awareness. Many share how their journeys led to life-changing decisions,
+          often shifting their life's direction in powerful, transformative ways.
+        </p>
+      </div>
+
+      {/* Nature Connection */}
+      <div className="bg-white border border-teal-200 rounded-3xl shadow-lg hover:shadow-2xl transition-shadow duration-500 p-5 text-left max-w-md mx-auto md:mx-0">
+        <h3 className="text-xl md:text-2xl font-bold text-teal-700 mb-4 font-serif tracking-wide">
+          Connect to Nature
+        </h3>
+        <p className="text-gray-700 leading-relaxed text-base md:text-lg font-medium">
+          Trekking immerses you in nature, but true connection comes from knowing where to look.
+          Our trek leaders are trained naturalists who don’t just guide—they share the trails’ flora,
+          fauna, and biodiversity, deepening your bond with the natural world.
+        </p>
+      </div>
+
+      {/* Social Connection */}
+      <div className="bg-white border border-teal-200 rounded-3xl shadow-lg hover:shadow-2xl transition-shadow duration-500 p-5 text-left max-w-md mx-auto md:mx-0">
+        <h3 className="text-xl md:text-2xl font-bold text-teal-700 mb-4 font-serif tracking-wide">
+          Connect to Others
+        </h3>
+        <p className="text-gray-700 leading-relaxed text-base md:text-lg font-medium">
+          Trekking nurtures lifelong friendships. In today’s fast-paced world, such deep connections
+          are rare. Our leaders foster a welcoming environment from the start, forming a close-knit
+          community bonded not just by the trail but through shared stories and understanding.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
       {/* Explore Treks */}
       <section id="explore" className="max-w-7xl mx-auto p-6">
         <h1 className="text-3xl font-bold text-center mb-6">Explore Treks</h1>
@@ -207,7 +262,7 @@ const Home = () => {
             <div className="mt-4 flex items-center justify-center gap-4">
               <img src={testimonialImg} alt="Trekker" className="w-12 h-12 rounded-full object-cover" />
               <div className="text-left">
-                <h4 className="font-semibold">Anjali Verma</h4>
+                <h4 className="font-semibold">Om Rana</h4>
                 <p className="text-sm text-gray-500">Delhi</p>
               </div>
             </div>
@@ -215,17 +270,31 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Gallery */}
-      <section className="bg-gray-100 py-16 px-6">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-10">Gallery</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {[gallery1, gallery2, gallery3].map((img, idx) => (
-              <img key={idx} src={img} alt={`Gallery ${idx + 1}`} className="rounded-xl shadow-md object-cover w-full h-60" />
-            ))}
-          </div>
+      {/* Gallery Section - 3D Image Hover Effect */}
+<section className="bg-gray-100 py-16 px-6">
+  <div className="max-w-7xl mx-auto text-center">
+    <h2 className="text-4xl font-extrabold mb-10 text-gray-800 tracking-wide">
+      Gallery
+    </h2>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 perspective-1000">
+      {[gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, gallery7, gallery8].map((img, idx) => (
+        <div
+          key={idx}
+          className="group relative w-full h-60 rounded-xl overflow-hidden shadow-xl transform-gpu transition-transform duration-500 hover:rotate-y-6 hover:scale-105"
+        >
+          <img
+            src={img}
+            alt={`Gallery ${idx + 1}`}
+            className="object-cover w-full h-full rounded-xl"
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* Certifications */}
       <section className="bg-white py-16 px-6">
