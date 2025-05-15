@@ -24,7 +24,7 @@ app.get("*", (_, res) => {
 });
 
 // MongoDB connection
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/trekify";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://keshav:Keshav%401020@cluster0.4hka8yg.mongodb.net/";
 
 mongoose
   .connect(MONGODB_URI)
