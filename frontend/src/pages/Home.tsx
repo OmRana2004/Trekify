@@ -2,19 +2,13 @@ import { useState } from "react";
 import TrekCard from "../components/TrekCard";
 import { treks } from "../data/treks";
 import FilterBar from "../components/FilterBar";
+import TestimonialsSection from "../components/TestimonialsSection"; 
+import GallerySection from "../components/GallerySection";
+
 import heroImage from "../assets/hero.png";
-import aboutImage from "../assets/about.jpg"; // new import
-import testimonialImg from "../assets/testimonials/trekker1.jpg";
-import gallery1 from "../assets/gallery/1.jpg";
-import gallery2 from "../assets/gallery/2.jpg";
-import gallery3 from "../assets/gallery/3.jpg";
-import gallery4 from "../assets/gallery/4.jpg";
-import gallery5 from "../assets/gallery/5.jpg";
-import gallery6 from "../assets/gallery/6.jpg";
-import gallery7 from "../assets/gallery/7.jpg";
-import gallery8 from "../assets/gallery/8.jpg";
-import gallery9 from "../assets/gallery/9.jpg";
-import gallery10 from "../assets/gallery/10.jpg";
+import aboutImage from "../assets/about.jpg"; 
+
+
 import nehru from "../assets/certificates/Nehru-Institute-of-Mountaineering-Logo-1-e1685940713654.webp";
 import imf from "../assets/certificates/imf.jpg";
 import UttarakhandLogo from "../assets/certificates/Uttarakhand-logo.jpg";
@@ -29,7 +23,6 @@ import {
   Compass,
   Briefcase,
   PhoneCall,
-  Quote,
 } from "lucide-react";
 
 const Home = () => {
@@ -255,47 +248,11 @@ const Home = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="bg-white py-16 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-10">What Our Trekkers Say</h2>
-          <div className="bg-gray-100 p-6 rounded-xl shadow-md">
-            <Quote className="w-10 h-10 text-yellow-500 mx-auto mb-4" />
-            <p className="text-lg italic">“Trekify made my first Himalayan trek unforgettable. Great food, professional guides, and stunning views!”</p>
-            <div className="mt-4 flex items-center justify-center gap-4">
-              <img src={testimonialImg} alt="Trekker" className="w-12 h-12 rounded-full object-cover" />
-              <div className="text-left">
-                <h4 className="font-semibold">Om Rana</h4>
-                <p className="text-sm text-gray-500">Delhi</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <TestimonialsSection/>
 
-      {/* Gallery Section - 3D Image Hover Effect */}
-<section className="bg-gray-100 py-16 px-6">
-  <div className="max-w-7xl mx-auto text-center">
-    <h2 className="text-4xl font-extrabold mb-10 text-gray-800 tracking-wide">
-      Gallery
-    </h2>
+      {/* Gallery Section */}
+        <GallerySection />
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 perspective-1000">
-      {[gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, gallery7, gallery8, gallery9, gallery10].map((img, idx) => (
-        <div
-          key={idx}
-          className="group relative w-full h-60 rounded-xl overflow-hidden shadow-xl transform-gpu transition-transform duration-500 hover:rotate-y-6 hover:scale-105"
-        >
-          <img
-            src={img}
-            alt={`Gallery ${idx + 1}`}
-            className="object-cover w-full h-full rounded-xl"
-          />
-          <div className="absolute inset-0 bg-black bg-opacity-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
 
 
       {/* Certifications */}
