@@ -11,6 +11,7 @@ interface Booking {
   date: string;
   message: string;
   createdAt: string;
+  isConfirmed: boolean; // ✅ Added field
 }
 
 const AdminDashboard: React.FC = () => {
@@ -32,6 +33,20 @@ const AdminDashboard: React.FC = () => {
 
     fetchBookings();
   }, []);
+
+  const handleConfirmBooking = async (id: string) => {
+    try {
+      await axios.patch(`http://localhost:5000/api/bookings/${id}/confirm`);
+      // Update local state after confirming
+      setBookings((prev) =>
+        prev.map((booking) =>
+          booking._id === id ? { ...booking, isConfirmed: true } : booking
+        )
+      );
+    } catch (err) {
+      console.error('Failed to confirm booking', err);
+    }
+  };
 
   if (loading) {
     return (
@@ -62,6 +77,7 @@ const AdminDashboard: React.FC = () => {
                 <th className="py-4 px-6 text-left font-medium">Persons</th>
                 <th className="py-4 px-6 text-left font-medium">Date</th>
                 <th className="py-4 px-6 text-left font-medium">Message</th>
+                <th className="py-4 px-6 text-left font-medium">Status</th> {/* ✅ New column */}
               </tr>
             </thead>
             <tbody>
@@ -77,6 +93,18 @@ const AdminDashboard: React.FC = () => {
                   <td className="py-4 px-6 text-gray-700">{booking.persons}</td>
                   <td className="py-4 px-6 text-gray-700">{booking.date}</td>
                   <td className="py-4 px-6 text-gray-700">{booking.message}</td>
+                  <td className="py-4 px-6">
+                    {booking.isConfirmed ? (
+                      <span className="text-green-600 font-semibold">Confirmed</span>
+                    ) : (
+                      <button
+                        onClick={() => handleConfirmBooking(booking._id)}
+                        className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm"
+                      >
+                        Confirm
+                      </button>
+                    )}
+                  </td>
                 </tr>
               ))}
             </tbody>
