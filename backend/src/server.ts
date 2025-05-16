@@ -8,6 +8,13 @@ import adminRoutes from "./routes/adminRoutes";
 
 dotenv.config();
 
+const MONGODB_URI = process.env.MONGODB_URI;
+const PORT = process.env.PORT || 5000;
+
+if (!MONGODB_URI) {
+  throw new Error("Missing MONGODB_URI in environment variables");
+}
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -24,15 +31,12 @@ app.get("*", (_, res) => {
 });
 
 // MongoDB connection
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://keshav:Keshav%401020@cluster0.4hka8yg.mongodb.net/";
-
 mongoose
   .connect(MONGODB_URI)
   .then(() => console.log("✅ MongoDB connected"))
   .catch((err) => console.error("❌ MongoDB connection error:", err));
 
 // Start server
-const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
 });

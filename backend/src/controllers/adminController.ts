@@ -1,9 +1,14 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
 
-const ADMIN_USERNAME = process.env.ADMIN_USERNAME || "admin";
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "admin123";
-const JWT_SECRET = process.env.JWT_SECRET || "supersecretkey";
+const { ADMIN_USERNAME, ADMIN_PASSWORD, JWT_SECRET } = process.env;
+
+if (!ADMIN_USERNAME || !ADMIN_PASSWORD || !JWT_SECRET) {
+  throw new Error("Missing environment variables (ADMIN_USERNAME, ADMIN_PASSWORD, JWT_SECRET)");
+}
 
 export const loginAdmin = (req: Request, res: Response) => {
   const { username, password } = req.body;
