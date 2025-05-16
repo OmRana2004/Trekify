@@ -8,23 +8,35 @@ const AdminLogin = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    setError("");
-    setLoading(true);
+  const handleLogin = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setError("");
+  setLoading(true);
 
-    // Simulate login delay
-    setTimeout(() => {
-      if (username === "admin" && password === "admin123") {
-        localStorage.setItem("token", "dummy_token");
-        localStorage.setItem("isAdmin", "true");
-        navigate("/admin/dashboard");
-      } else {
-        setError("Invalid username or password");
-      }
-      setLoading(false);
-    }, 800);
-  };
+  try {
+    const response = await fetch("http://localhost:5000/api/admin/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("isAdmin", "true");
+      navigate("/admin/dashboard");
+    } else {
+      const errorData = await response.json();
+      setError(errorData.message || "Login failed");
+    }
+  } catch (err) {
+    console.error(err);
+    setError("Server error");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
