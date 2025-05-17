@@ -6,24 +6,33 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const cors_1 = __importDefault(require("cors"));
-const body_parser_1 = __importDefault(require("body-parser"));
-const bookingRoutes_1 = __importDefault(require("./routes/bookingRoutes"));
 const dotenv_1 = __importDefault(require("dotenv"));
-// Initialize environment variables
+const bookingRoutes_1 = __importDefault(require("./routes/bookingRoutes"));
+const adminRoutes_1 = __importDefault(require("./routes/adminRoutes"));
+const path_1 = __importDefault(require("path"));
 dotenv_1.default.config();
-const app = (0, express_1.default)();
-// Middlewares
-app.use((0, cors_1.default)());
-app.use(body_parser_1.default.json());
-// Routes
-app.use("/api/bookings", bookingRoutes_1.default);
-// Connect to MongoDB
-mongoose_1.default
-    .connect(process.env.MONGODB_URI || "")
-    .then(() => console.log("MongoDB connected"))
-    .catch((error) => console.error("MongoDB connection error: ", error));
-// Start the server
+const MONGODB_URI = process.env.MONGODB_URI;
 const PORT = process.env.PORT || 5000;
+if (!MONGODB_URI) {
+    throw new Error("Missing MONGODB_URI in environment variables");
+}
+const app = (0, express_1.default)();
+app.use((0, cors_1.default)());
+app.use(express_1.default.json());
+// API Routes
+app.use("/api/bookings", bookingRoutes_1.default);
+app.use("/api/admin", adminRoutes_1.default);
+// Serve React build files
+app.use(express_1.default.static(path_1.default.join(__dirname, "../../frontend/build")));
+app.get("*", (_, res) => {
+    res.sendFile(path_1.default.join(__dirname, "../../frontend/build/index.html"));
+});
+// MongoDB connection
+mongoose_1.default
+    .connect(MONGODB_URI)
+    .then(() => console.log("✅ MongoDB connected"))
+    .catch((err) => console.error("❌ MongoDB connection error:", err));
+// Start server
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
