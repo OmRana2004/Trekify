@@ -3,8 +3,8 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import bookingRoutes from "./routes/bookingRoutes";
-import adminRoutes from "./routes/adminRoutes";
 import path from "path";
+import adminRoutes from "./routes/adminRoutes";
 
 dotenv.config();
 
@@ -24,10 +24,10 @@ app.use("/api/bookings", bookingRoutes);
 app.use("/api/admin", adminRoutes);
 
 // Serve React build files
-app.use(express.static(path.join(__dirname, "../../frontend/build")));
+app.use(express.static(path.join(__dirname, "../public")));
 
 app.get("*", (_, res) => {
-  res.sendFile(path.join(__dirname, "../../frontend/build/index.html"));
+  res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
 // MongoDB connection
@@ -38,5 +38,5 @@ mongoose
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log('🚀 Server running on http://localhost:${PORT}');
 });
