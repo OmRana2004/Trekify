@@ -30,7 +30,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ trekName, onClose }) => {
         trekName,
       };
 
-      const response = await axios.post('/api/bookings', bookingData);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/bookings`, bookingData);
 
       alert(response.data.message || 'Booking created successfully!');
       onClose();
