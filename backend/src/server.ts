@@ -15,31 +15,45 @@ if (!MONGODB_URI) {
   throw new Error("Missing MONGODB_URI in environment variables");
 }
 
+const normalizeOrigin = (origin: string) => origin.replace(/\/$/, "");
+
+const allowedOrigins = [
+  normalizeOrigin(process.env.FRONTEND_URL || "https://trekify-full-stack-frontend.vercel.app"),
+  "http://localhost:5173",
+];
+
 const app = express();
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL,
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true); // Allow non-browser requests
+
+    const normalizedOrigin = normalizeOrigin(origin);
+    if (allowedOrigins.includes(normalizedOrigin)) {
+      callback(null, true);
+    } else {
+      console.warn(`CORS blocked: Origin ${origin} not allowed`);
+      callback(new Error(`CORS policy: Origin ${origin} not allowed`));
+    }
+  },
   credentials: true,
 }));
+
 app.use(express.json());
 
-// API Routes
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/admin", adminRoutes);
 
-// Serve React build files
 app.use(express.static(path.join(__dirname, "../public")));
 
 app.get("*", (_, res) => {
   res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
-// MongoDB connection
-mongoose
-  .connect(MONGODB_URI)
+mongoose.connect(MONGODB_URI)
   .then(() => console.log("✅ MongoDB connected"))
-  .catch((err) => console.error("❌ MongoDB connection error:", err));
+  .catch(err => console.error("❌ MongoDB connection error:", err));
 
-// Start server
 app.listen(PORT, () => {
-  console.log('🚀 Server running on http://localhost:${PORT}');
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
