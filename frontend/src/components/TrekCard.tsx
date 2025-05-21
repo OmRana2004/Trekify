@@ -10,7 +10,6 @@ const TrekCard: React.FC<TrekCardProps> = ({ trek }) => {
   return (
     <div
       className="bg-white shadow-md rounded-2xl overflow-hidden hover:shadow-lg transition-shadow duration-300 group"
-      data-aos="zoom-in-up"
     >
       {/* Image */}
       <div className="overflow-hidden">
