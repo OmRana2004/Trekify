@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { treks } from "../data/treks";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BookingModal from "../components/BookingModal";
 import { Helmet } from "react-helmet";
 
@@ -8,6 +8,11 @@ const TrekDetail = () => {
   const { id } = useParams<{ id: string }>();
   const trek = treks.find((trek) => trek.id === id);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+
+  // Scroll to top whenever 'id' changes (i.e., when page loads or trek changes)
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   if (!trek) {
     return (
@@ -177,10 +182,7 @@ const TrekDetail = () => {
         </button>
       </div>
       {isBookingOpen && (
-        <BookingModal
-          onClose={() => setIsBookingOpen(false)}
-          trekName={trek.name}
-        />
+        <BookingModal onClose={() => setIsBookingOpen(false)} trekName={trek.name} />
       )}
 
       {/* Testimonials */}
@@ -211,67 +213,57 @@ const TrekDetail = () => {
       )}
 
       {/* Similar Treks */}
-{similarTreks.length > 0 && (
-  <section className="mt-20 px-4 sm:px-6 lg:px-8">
-    <div className="max-w-7xl mx-auto text-center">
-      <h2
-        data-aos="fade-up"
-        className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4 font-serif"
-      >
-        Similar Treks
-      </h2>
-      <p className="text-gray-600 mb-10 max-w-2xl mx-auto text-base sm:text-lg">
-        Discover more adventures that match your spirit of exploration.
-      </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {similarTreks.map((similarTrek, index) => (
-          <div
-            key={similarTrek.id}
-            data-aos="fade-up"
-            data-aos-delay={index * 100}
-            className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden"
-          >
-            <img
-              loading="lazy"
-              src={similarTrek.image}
-              alt={similarTrek.name}
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-5 text-left">
-              <h3 className="text-lg sm:text-xl font-bold text-gray-800 font-serif">
-                {similarTrek.name}
-              </h3>
-              <p className="text-sm text-gray-600 mt-1">
-                {similarTrek.location} • {similarTrek.difficulty} • {similarTrek.duration}
-              </p>
-              <p className="text-green-600 font-semibold mt-2 text-sm sm:text-base">
-                ₹{similarTrek.price}
-              </p>
-              <a
-                href={`/trek/${similarTrek.id}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block mt-4 text-green-600 font-medium text-sm hover:underline"
-              >
-                View Details →
-              </a>
+      {similarTreks.length > 0 && (
+        <section className="mt-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto text-center">
+            <h2
+              data-aos="fade-up"
+              className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4 font-serif"
+            >
+              Similar Treks
+            </h2>
+            <p className="text-gray-600 mb-10 max-w-2xl mx-auto text-base sm:text-lg">
+              Discover more adventures that match your spirit of exploration.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+              {similarTreks.map((similarTrek, index) => (
+                <div
+                  key={similarTrek.id}
+                  data-aos="fade-up"
+                  data-aos-delay={index * 100}
+                  className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden"
+                >
+                  <img
+                    loading="lazy"
+                    src={similarTrek.image}
+                    alt={similarTrek.name}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-5 text-left">
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-800 font-serif">
+                      {similarTrek.name}
+                    </h3>
+                    <p className="text-sm text-gray-600 mt-1">
+                      {similarTrek.location} • {similarTrek.difficulty} • {similarTrek.duration}
+                    </p>
+                    <p className="text-green-600 font-semibold mt-2 text-sm sm:text-base">
+                      ₹{similarTrek.price}
+                    </p>
+                    <a
+                      href={`/trek/${similarTrek.id}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block mt-4 text-green-600 font-medium text-sm hover:underline"
+                    >
+                      View Details →
+                    </a>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-        ))}
-      </div>
-    </div>
-  </section>
-)}
-
-
-      {/* Scroll to Top */}
-      {/* <button
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="fixed bottom-6 right-6 z-50 bg-green-600 text-white p-3 rounded-full shadow-lg hover:bg-green-700 transition-all"
-        aria-label="Scroll to top"
-      >
-        ⬆
-      </button> */}
+        </section>
+      )}
     </div>
   );
 };
