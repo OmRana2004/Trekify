@@ -8,11 +8,13 @@ interface Booking {
   email: string;
   phone: string;
   persons: number;
-  date: string;         // Trek date
+  date: string;
   message: string;
-  createdAt: string;    // Booking creation datetime
+  createdAt: string;
   isConfirmed: boolean;
 }
+
+const BASE_URL = import.meta.env.VITE_API_URL + '/api/bookings';
 
 const AdminDashboard: React.FC = () => {
   const [bookings, setBookings] = useState<Booking[]>([]);
@@ -20,11 +22,12 @@ const AdminDashboard: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [showHistory, setShowHistory] = useState(false);
+  const [confirmLoadingIds, setConfirmLoadingIds] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     const fetchBookings = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/bookings');
+        const response = await axios.get(BASE_URL);
         setBookings(response.data.filter((b: Booking) => !b.isConfirmed));
         setHistory(response.data.filter((b: Booking) => b.isConfirmed));
         setLoading(false);
@@ -38,16 +41,26 @@ const AdminDashboard: React.FC = () => {
   }, []);
 
   const handleConfirmBooking = async (id: string) => {
+    setConfirmLoadingIds((prev) => new Set(prev).add(id));
+
     try {
-      await axios.patch(`http://localhost:5000/api/bookings/${id}/confirm`);
-      setBookings((prev) => prev.filter((booking) => booking._id !== id));
-      const confirmedBooking = bookings.find((b) => b._id === id);
-      if (confirmedBooking) {
-        setHistory((prevHistory) => [...prevHistory, { ...confirmedBooking, isConfirmed: true }]);
-      }
-      setShowHistory(true);
+      await axios.patch(`${BASE_URL}/${id}/confirm`);
+
+      setBookings((prev) => {
+        const confirmedBooking = prev.find((b) => b._id === id);
+        if (confirmedBooking) {
+          setHistory((prevHistory) => [...prevHistory, { ...confirmedBooking, isConfirmed: true }]);
+        }
+        return prev.filter((booking) => booking._id !== id);
+      });
     } catch {
       alert('Failed to confirm booking. Please try again.');
+    } finally {
+      setConfirmLoadingIds((prev) => {
+        const newSet = new Set(prev);
+        newSet.delete(id);
+        return newSet;
+      });
     }
   };
 
@@ -91,7 +104,7 @@ const AdminDashboard: React.FC = () => {
                     <th className="py-4 px-6 text-left font-medium">Phone</th>
                     <th className="py-4 px-6 text-left font-medium">Persons</th>
                     <th className="py-4 px-6 text-left font-medium">Date</th>
-                    <th className="py-4 px-6 text-left font-medium">Booking Time</th> {/* New */}
+                    <th className="py-4 px-6 text-left font-medium">Booking Time</th>
                     <th className="py-4 px-6 text-left font-medium">Message</th>
                     <th className="py-4 px-6 text-left font-medium">Status</th>
                   </tr>
@@ -115,9 +128,14 @@ const AdminDashboard: React.FC = () => {
                       <td className="py-4 px-6">
                         <button
                           onClick={() => handleConfirmBooking(booking._id)}
-                          className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm"
+                          disabled={confirmLoadingIds.has(booking._id)}
+                          className={`px-4 py-2 rounded-md text-sm text-white ${
+                            confirmLoadingIds.has(booking._id)
+                              ? 'bg-blue-300 cursor-not-allowed'
+                              : 'bg-blue-500 hover:bg-blue-600'
+                          }`}
                         >
-                          Confirm
+                          {confirmLoadingIds.has(booking._id) ? 'Confirming...' : 'Confirm'}
                         </button>
                       </td>
                     </tr>
@@ -142,7 +160,7 @@ const AdminDashboard: React.FC = () => {
                     <th className="py-4 px-6 text-left font-medium">Phone</th>
                     <th className="py-4 px-6 text-left font-medium">Persons</th>
                     <th className="py-4 px-6 text-left font-medium">Date</th>
-                    <th className="py-4 px-6 text-left font-medium">Booking Time</th> {/* New */}
+                    <th className="py-4 px-6 text-left font-medium">Booking Time</th>
                     <th className="py-4 px-6 text-left font-medium">Message</th>
                     <th className="py-4 px-6 text-left font-medium">Status</th>
                   </tr>
