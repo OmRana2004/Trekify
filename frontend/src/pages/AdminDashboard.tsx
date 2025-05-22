@@ -130,16 +130,17 @@ const AdminDashboard: React.FC = () => {
                       <span className="text-green-600 font-bold">Confirmed</span>
                     ) : (
                       <button
-                        onClick={() => handleConfirmBooking(booking._id)}
-                        disabled={confirmLoadingIds.has(booking._id)}
-                        className={`px-4 py-2 rounded-lg text-white shadow-md transition duration-300 ${
-                          confirmLoadingIds.has(booking._id)
-                            ? 'bg-blue-300 cursor-not-allowed'
-                            : 'bg-gradient-to-r from-blue-500 to-indigo-500 hover:scale-105'
-                        }`}
-                      >
-                        {confirmLoadingIds.has(booking._id) ? 'Confirming...' : 'Confirm'}
-                      </button>
+  onClick={() => handleConfirmBooking(booking._id)}
+  disabled={confirmLoadingIds.has(booking._id)}
+  className={`px-4 py-2 rounded-lg text-white shadow-md transition duration-300 ${
+    confirmLoadingIds.has(booking._id)
+      ? 'bg-blue-300 cursor-not-allowed'
+      : 'bg-gradient-to-r from-blue-500 to-indigo-500 hover:scale-105 cursor-pointer'
+  }`}
+>
+  {confirmLoadingIds.has(booking._id) ? 'Confirming...' : 'Confirm'}
+</button>
+
                     )}
                   </td>
                 </tr>
