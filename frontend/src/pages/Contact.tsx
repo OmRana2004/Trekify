@@ -28,7 +28,7 @@ const Contact = () => {
   return (
     <section className="bg-gradient-to-br from-green-50 to-white py-20 px-4">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold text-center text-green-700 mb-14">
+        <h1 className="text-4xl p-2.5 md:text-6xl font-bold text-center text-green-500 mb-14">
           Contact Us
         </h1>
 

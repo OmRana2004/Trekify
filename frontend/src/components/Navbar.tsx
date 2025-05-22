@@ -1,59 +1,63 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [showNavbar, setShowNavbar] = useState(true); // For auto hide/show on scroll
-  const lastScrollY = useRef(0);
-  const dropdownRef = useRef<HTMLDivElement | null>(null);
 
-  // Handle scroll to set background and hide/show navbar on scroll direction
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  let lastScrollY = useRef(window.scrollY);
+
   useEffect(() => {
-    const handleScroll = () => {
+    function handleScroll() {
       const currentScrollY = window.scrollY;
 
-      // Background change after scrolling 50px
-      setIsScrolled(currentScrollY > 50);
+      setIsScrolled(currentScrollY > 40);
 
-      // Auto hide navbar on scroll down, show on scroll up
-      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
-        // Scrolling down & past 100px: hide navbar
+      if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
         setShowNavbar(false);
       } else {
-        // Scrolling up: show navbar
         setShowNavbar(true);
       }
-
       lastScrollY.current = currentScrollY;
-    };
+    }
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close dropdown if clicked outside
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsDropdownOpen(false);
       }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
+    }
+    if (isDropdownOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  }, [isDropdownOpen]);
 
-  const closeMobileMenu = () => {
+  function closeMobileMenu() {
     setIsMobileMenuOpen(false);
     setIsDropdownOpen(false);
-  };
+  }
 
   return (
     <nav
-      className={`fixed w-full z-50 top-0 left-0 py-4 px-6 transition-all duration-300 backdrop-blur-lg shadow-lg
+      className={`fixed w-full z-50 top-0 left-0 py-5 px-8 transition-all duration-300 backdrop-blur-sm
         ${
-          isScrolled ? "bg-white/90" : "bg-green-600/70"
+          isScrolled
+            ? "bg-gradient-to-r from-green-700 via-green-600 to-green-500 shadow-xl"
+            : "bg-gradient-to-r from-green-800 via-green-700 to-green-600"
         }
         ${showNavbar ? "translate-y-0" : "-translate-y-full"}
         transform
@@ -64,77 +68,81 @@ const Navbar = () => {
         {/* Logo */}
         <NavLink
           to="/"
-          className="text-4xl font-extrabold text-white hover:text-gray-200 transition-all duration-300 tracking-wide"
+          className="text-4xl font-extrabold text-green-50 hover:text-yellow-400 transition-all duration-300 tracking-wide select-none"
           onClick={closeMobileMenu}
+          aria-label="Trekify Logo"
         >
           Trekify
         </NavLink>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex space-x-8 items-center">
-          <NavLink
-            to="/"
-            className="text-lg font-medium text-white hover:text-yellow-300 transition"
-            onClick={closeMobileMenu}
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="/about"
-            className="text-lg font-medium text-white hover:text-yellow-300 transition"
-            onClick={closeMobileMenu}
-          >
-            About
-          </NavLink>
+        <div className="hidden md:flex space-x-10 items-center">
+          {["Home", "About", "Contact"].map((item) => (
+            <NavLink
+              key={item}
+              to={`/${item === "Home" ? "" : item.toLowerCase()}`}
+              className="relative text-lg font-semibold text-green-50 hover:text-yellow-400 transition ease-in-out duration-300 px-1"
+              onClick={closeMobileMenu}
+            >
+              {item}
+              {/* Underline effect */}
+              <span
+                className="absolute left-0 -bottom-1 w-0 h-0.5 bg-yellow-400 transition-all duration-300"
+                style={{ transitionTimingFunction: "cubic-bezier(0.4,0,0.2,1)" }}
+              />
+            </NavLink>
+          ))}
 
           <div className="relative" ref={dropdownRef}>
             <button
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               aria-expanded={isDropdownOpen}
               aria-controls="treks-dropdown"
-              className="text-lg font-medium text-white hover:text-yellow-300 transition"
+              className="relative text-lg font-semibold text-green-50 hover:text-yellow-400 transition ease-in-out duration-300 px-1 focus:outline-none"
             >
               Treks
-            </button>
-            {isDropdownOpen && (
-              <div
-                id="treks-dropdown"
-                className="absolute left-0 mt-2 w-52 bg-white shadow-xl rounded-xl overflow-hidden z-50"
+              <motion.span
+                animate={{ rotate: isDropdownOpen ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+                className="inline-block ml-2 text-yellow-400"
+                aria-hidden="true"
               >
-                <NavLink
-                  to="/treks"
-                  className="block px-5 py-3 text-gray-700 hover:bg-green-100 transition"
-                  onClick={closeMobileMenu}
+                ▼
+              </motion.span>
+            </button>
+            <AnimatePresence>
+              {isDropdownOpen && (
+                <motion.div
+                  id="treks-dropdown"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.25 }}
+                  className="absolute left-0 mt-3 w-56 bg-green-50 rounded-2xl shadow-2xl overflow-hidden z-50 ring-1 ring-green-400"
                 >
-                  All Treks
-                </NavLink>
-                <NavLink
-                  to="/trek-packages"
-                  className="block px-5 py-3 text-gray-700 hover:bg-green-100 transition"
-                  onClick={closeMobileMenu}
-                >
-                  Trek Packages
-                </NavLink>
-                <NavLink
-                  to="/faq"
-                  className="block px-5 py-3 text-gray-700 hover:bg-green-100 transition"
-                  onClick={closeMobileMenu}
-                >
-                  FAQ
-                </NavLink>
-              </div>
-            )}
+                  {[
+                    { label: "All Treks", to: "/treks" },
+                    { label: "Trek Packages", to: "/trek-packages" },
+                    { label: "FAQ", to: "/faq" },
+                  ].map(({ label, to }) => (
+                    <NavLink
+                      key={to}
+                      to={to}
+                      className="block px-7 py-4 text-green-900 hover:bg-green-200 hover:text-green-900 transition duration-200 font-medium rounded-lg"
+                      onClick={closeMobileMenu}
+                    >
+                      {label}
+                    </NavLink>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
-          <NavLink
-            to="/contact"
-            className="text-lg font-medium text-white hover:text-yellow-300 transition"
-            onClick={closeMobileMenu}
+          <button
+            className="ml-6 text-lg font-semibold text-green-900 bg-yellow-400 hover:bg-yellow-300 px-8 py-3 rounded-full shadow-lg transition transform hover:scale-110 hover:shadow-yellow-400 ease-in-out duration-300"
+            aria-label="Book Now"
           >
-            Contact
-          </NavLink>
-
-          <button className="ml-4 text-lg font-semibold text-green-700 bg-white hover:bg-green-100 px-6 py-3 rounded-full shadow-md transition transform hover:scale-105">
             Book Now
           </button>
         </div>
@@ -142,7 +150,7 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <div className="md:hidden">
           <button
-            className="text-white hover:text-yellow-300"
+            className="text-green-50 hover:text-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-200 rounded-md"
             aria-label="Toggle mobile menu"
             aria-expanded={isMobileMenuOpen}
             onClick={() => {
@@ -150,6 +158,7 @@ const Navbar = () => {
               setIsDropdownOpen(false);
             }}
           >
+            {/* hamburger icon */}
             <svg
               className="w-8 h-8"
               fill="none"
@@ -168,56 +177,40 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Slide Menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-green-600/80 backdrop-blur-md shadow-lg p-6 mt-2 transition-opacity duration-300 ease-in-out">
-          <NavLink
-            to="/"
-            className="block py-3 text-lg font-medium text-white hover:text-yellow-300 transition"
-            onClick={closeMobileMenu}
+      {/* Mobile Slide Menu with animation */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-gradient-to-b from-green-700 to-green-600 backdrop-blur-md shadow-2xl p-8 mt-4 rounded-b-3xl space-y-4 glow-text-small bg-yellow-600"
           >
-            Home
-          </NavLink>
-          <NavLink
-            to="/about"
-            className="block py-3 text-lg font-medium text-white hover:text-yellow-300 transition"
-            onClick={closeMobileMenu}
-          >
-            About
-          </NavLink>
-          <NavLink
-            to="/treks"
-            className="block py-3 text-lg font-medium text-white hover:text-yellow-300 transition"
-            onClick={closeMobileMenu}
-          >
-            All Treks
-          </NavLink>
-          <NavLink
-            to="/trek-packages"
-            className="block py-3 text-lg font-medium text-white hover:text-yellow-300 transition"
-            onClick={closeMobileMenu}
-          >
-            Trek Packages
-          </NavLink>
-          <NavLink
-            to="/faq"
-            className="block py-3 text-lg font-medium text-white hover:text-yellow-300 transition"
-            onClick={closeMobileMenu}
-          >
-            FAQ
-          </NavLink>
-          <NavLink
-            to="/contact"
-            className="block py-3 text-lg font-medium text-white hover:text-yellow-300 transition"
-            onClick={closeMobileMenu}
-          >
-            Contact
-          </NavLink>
-          <button className="mt-4 w-full text-lg font-semibold text-green-700 bg-white hover:bg-green-100 px-6 py-3 rounded-full shadow-md transition transform hover:scale-105">
-            Book Now
-          </button>
-        </div>
-      )}
+            {[
+              { label: "Home", to: "/" },
+              { label: "About", to: "/about" },
+              { label: "All Treks", to: "/treks" },
+              { label: "Trek Packages", to: "/trek-packages" },
+              { label: "FAQ", to: "/faq" },
+              { label: "Contact", to: "/contact" },
+            ].map(({ label, to }) => (
+              <NavLink
+                key={to}
+                to={to}
+                className="block py-4 text-lg font-semibold text-green-50 hover:text-yellow-400 transition ease-in-out duration-300"
+                onClick={closeMobileMenu}
+              >
+                {label}
+              </NavLink>
+            ))}
+
+            <button className="mt-6 w-full text-lg font-semibold text-green-900 bg-yellow-400 hover:bg-yellow-300 px-8 py-4 rounded-full shadow-lg transition transform hover:scale-105 hover:shadow-yellow-400 ease-in-out duration-300">
+              Book Now
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
