@@ -3,6 +3,9 @@ import Kedartal from "../assets/KedartalTrek/KedarTal.jpg";
 import Sattal from "../assets/SattalTreak/SatTal.webp";
 import MtSrikanthBaseCamp from "../assets/Srikanth/Srikanth-Base-Camp.jpg";
 import TunganathChandrashila from "../assets/TunganathChandrashilaTrek/TunganathChandrashila.webp";
+import GaumukhTapovan from "../assets/GaumukhTapovan/GaumukhTapovan.jpg";
+import Kyarkoti from "../assets/Kyarkoti/Kyarkoti.png";
+import MtSatopanthExpedition from "../assets/SatopanthExpedition/SatopanthExpedition.jpg";
 import KedartalImage1 from "../assets/KedartalTrek/KedarTal-1.jpg";
 import KedartalImage2 from "../assets/KedartalTrek/KedarTal-2.webp";
 import KedartalImage3 from "../assets/KedartalTrek/KedarTal-3.jpg";
@@ -19,19 +22,29 @@ import TunganathImage1 from "../assets/TunganathChandrashilaTrek/tungnath-1.webp
 import TunganathImage2 from "../assets/TunganathChandrashilaTrek/tungnath-2.webp";
 import TunganathImage3 from "../assets/TunganathChandrashilaTrek/tungnath-3.jpeg";
 import TunganathImage4 from "../assets/TunganathChandrashilaTrek/tungnath-4.jpeg";
-import GaumukhTapovan from "../assets/GaumukhTapovan/GaumukhTapovan.jpg";
 import GaumukhTapovanImage1 from "../assets/GaumukhTapovan/GaumukhTapovan-1.webp";
 import GaumukhTapovanImage2 from "../assets/GaumukhTapovan/GaumukhTapovan-2.webp";   
 import GaumukhTapovanImage3 from "../assets/GaumukhTapovan/GaumukhTapovan-3.webp";
 import GaumukhTapovanImage4 from "../assets/GaumukhTapovan/GaumukhTapovan-4.webp";
+import KyarkotiImage1 from "../assets/Kyarkoti/Kyarkoti1.jpg";
+import KyarkotiImage2 from "../assets/Kyarkoti/Kyarkoti2.jpg";
+import KyarkotiImage3 from "../assets/Kyarkoti/Kyarkoti3.jpg";
+import KyarkotiImage4 from "../assets/Kyarkoti/Kyarkoti4.jpg";
+import SatopanthImage1 from "../assets/SatopanthExpedition/Satopanth1.jpg";
+import SatopanthImage2 from "../assets/SatopanthExpedition/Satopanth2.jpg";
+import SatopanthImage3 from "../assets/SatopanthExpedition/Satopanth3.webp";
+import SatopanthImage4 from "../assets/SatopanthExpedition/Satopanth4.webp";
 // Import PDFs
 import KedarTalItinerary from "../assets/KedartalTrek/KedarTal-Itinerary.pdf";
 import SatTalItinarary from "../assets/SattalTreak/SatTal-Itinerary.pdf";
 import SrikanthBaseCampItinarary from "../assets/Srikanth/SrikanthBaseCamp-Itinarary.pdf";
 import TunganathChandrashilaItinerary from "../assets/TunganathChandrashilaTrek/TunganathChandrashila-Itinerary.pdf"; 
 import GaumukhTapovanItinerary from "../assets/GaumukhTapovan/GaumukhTapovan-Itinerary.pdf";
+import KyarkotiItinerary from "../assets/Kyarkoti/Kyarkoti-Itinerary.pdf";
+import SatopanthItinarary from "../assets/SatopanthExpedition/Satopanth-Itinarary.pdf";
 
 export const treks: Trek[] = [
+         // 1
   {
     id: "KEDARTAL",
     name: "Kedartal Trek",
@@ -75,6 +88,7 @@ export const treks: Trek[] = [
     ],
     itineraryPdf: KedarTalItinerary,
   },
+                       // 2
   {
     id: "SATTAL",
     name: "Sattal Trek",
@@ -112,6 +126,7 @@ export const treks: Trek[] = [
     ],
     itineraryPdf: SatTalItinarary,
   },
+                   // 3
   {
     id: "MT SRIKANTH BASE CAMP",
     name: "Mt Srikanth Base Camp Trek",
@@ -151,6 +166,7 @@ export const treks: Trek[] = [
     ],
     itineraryPdf: SrikanthBaseCampItinarary,
   },
+                        // 4
   {
     id: "TUNGANATH-CHANDRASHILA",
     name: "Tunganath-Chandrashila Trek",
@@ -190,6 +206,7 @@ export const treks: Trek[] = [
     ],
     itineraryPdf: TunganathChandrashilaItinerary,
   },
+                       // 5
   {
     id: "GAUMUKH TAPOVAN",
     name: "Gaumukh Tapovan Trek",
@@ -231,23 +248,25 @@ export const treks: Trek[] = [
     ],
     itineraryPdf: GaumukhTapovanItinerary,
   },
+                        // 6
   {
-    id: "MT SRIKANTH BASE CAMP",
-    name: "Mt Srikanth Base Camp Trek",
+    id: "KYARKOTI",
+    name: "Kyarkoti Trek",
     location: "Uttarakhand",
-    difficulty: "Easy",
-    duration: "5 Days",
-    price: 12500,
-    image: MtSrikanthBaseCamp,
+    difficulty: "Moderate",
+    duration: "6 Days",
+    price: 14000,
+    image: Kyarkoti,
     season: "Winter/Summer",
-    description: "It is our constant endeavor to bring to adventure lovers new trails to explore. Mt Srikanth Base Camp trek is one such trail. It starts from the picturesque village of Dharali in Harsil Valley of Uttarkashi District, Uttarakhand, India. The maximum altitude reached is 4533m. It is a 13km trek that takes a trekker along beautiful forests of pine, cedar and alpine meadows. The trail is laden with various species of flowers along the way including the famous Brahma Kamal (white lotus).",
+    description: " Kyarkoti Trek – A Hidden Gem of the Garhwal Himalayas. Tucked away in the serene Harsil Valley of Uttarakhand, Kyarkoti is an alpine meadow that promises to leave you spellbound with its untouched beauty. Just 16 km from the quaint village of Harsil, this breathtaking trek offers a magical blend of lush forests, pristine lakes, and majestic Himalayan peaks. Following part of the Lamkhaga Pass trail—which leads to Chitkul in Himachal Pradesh—the route meanders through dense alpine forests of cedar, pine, and birch, with charming little streams crossing your path. One of the highlights of the journey is the emerald green Kyarkoti Lake, a tranquil spot surrounded by towering mountains. Along the way, you might encounter large herds of sheep from the nearby Bagori Village, known for its traditional woolens. The trek also offers breathtaking views of Mt. Srikanth and numerous unnamed peaks that will fill your heart with awe.And after a day of adventure, unwind with our lip-smacking meals and relax in our cozy, warm tents—an experience that completes this unforgettable Himalayan journey.",
 
     itinerary: [
       "Day 1: Arrival at Harsil/Dharali",
-      "Day 2: 7km trek to Jhinda Bugyal",
-      "Day 3: :6km to Base Camp and back to camp site",
-      "Day 4: Back to Harsil / Dharali",
-      "Day 5: After breakfast, check out of the hotel."
+      "Day 2: Harsil to Gangnani - 8 km trek",
+      "Day 3: Gangnani to Upper Kyarkoti - 9 km trek",
+      "Day 4: Explore Kyarkot",
+      "Day 5: Upper Kyarkoti to Gangnani 9 km trek.",
+      "Day 6: Gangnani to Harsil - 8 km trek"
     ],
     inclusions: [
       "2 Nights accommodation in Harsil/Dharali.",
@@ -263,36 +282,55 @@ export const treks: Trek[] = [
       "Waterproof gloves"
     ],
     gallery: [
-      SrikanthImage1,
-      SrikanthImage2,
-      SrikanthImage3,
-      SrikanthImage4
+      KyarkotiImage1,
+      KyarkotiImage2,
+      KyarkotiImage3,
+      KyarkotiImage4 
     ],
-    itineraryPdf: SrikanthBaseCampItinarary,
+    itineraryPdf: KyarkotiItinerary,
   },
+                          // 7
   {
-    id: "MT SRIKANTH BASE CAMP",
-    name: "Mt Srikanth Base Camp Trek",
+    id: "MT SATOPANTH EXPEDITION",
+    name: "Mt Satopanth Expedition",
     location: "Uttarakhand",
-    difficulty: "Easy",
-    duration: "5 Days",
-    price: 12500,
-    image: MtSrikanthBaseCamp,
+    difficulty: "Hard",
+    duration: "20 Days",
+    price: 145000,
+    image: MtSatopanthExpedition,
     season: "Winter/Summer",
-    description: "It is our constant endeavor to bring to adventure lovers new trails to explore. Mt Srikanth Base Camp trek is one such trail. It starts from the picturesque village of Dharali in Harsil Valley of Uttarkashi District, Uttarakhand, India. The maximum altitude reached is 4533m. It is a 13km trek that takes a trekker along beautiful forests of pine, cedar and alpine meadows. The trail is laden with various species of flowers along the way including the famous Brahma Kamal (white lotus).",
+    description: "Mount Satopanth – A Thrilling Ascent in the Garhwal Himalayas, Rising majestically in the Gangotri Valley of Uttarakhand, Mount Satopanth stands as one of the most formidable peaks in the Garhwal region of the Himalayas. At over 7,000 meters, it proudly claims its place as a “seven thousander” and the second-highest peak in the Gangotri Valley. Renowned as an ideal practice expedition for Everest aspirants, the climb to Satopanth is anything but ordinary. The route demands traversing vast glaciers, navigating crevasses, and ascending a dramatic knife-edge ridge on the final push to the summit—making it a highly technical and challenging ascent suited for experienced mountaineers. For those who dare, Mount Satopanth offers not just a climb, but a test of endurance, skill, and spirit amid the raw grandeur of the Himalayas.",
 
     itinerary: [
-      "Day 1: Arrival at Harsil/Dharali",
-      "Day 2: 7km trek to Jhinda Bugyal",
-      "Day 3: :6km to Base Camp and back to camp site",
-      "Day 4: Back to Harsil / Dharali",
-      "Day 5: After breakfast, check out of the hotel."
+      "Day 1: Arrive at Uttarkashi and check in to a hotel.",
+      "Day 2: Drive 100km to reach Gangotri, the nearest road head. Witness the Ganga Arati in the evening",
+      "Day 3: Acclimatization Day at Gangotri. Climbers can hike around the area to visit places like the Surya Kund and Pandava Gufa (cave).",
+      "Day 4: Trek 14km from Gangotri to Bhojbabsa (3700m). We will set up our camps here.",
+      "Day 5: Trek 11km from Bhojbasa to Nandanvan (4400m). Overnight in tents.",
+      "Day 6: Trek 6km from Nandanvan to Vasuki Tal(4800m). We set up our Base Camp here",
+      "Day 7: Acclimatization Day at Vasuki Tal. We will prepare today for our climb next day to ABC. We will sort out all climbing gear, equipment etc. Porters will accompany us only until the Base Camp, unless requested for by the client in which case High Altitude Porters(HAP) will have to be hired",
+      "Day 8: Climbers will ferry load to Advanced Base Camp at 5100m and will come back to the Base Camp for 2 days. This will serve as acclimatization as well.",
+      "Day 9: Acclimatization Day at Base Camp at Vasuki (4800m)",
+      "Day 10: Base Camp to Advanced Base Camp (5100m)",
+      "Day 11: Advence Base Camp to Camp 1 and Back to Advance Base Camp (5100m)",
+      "Day 12: Advance Base Camp to Camp1 (5800m)",
+      "Day 13: Camp 1 to Summit Camp(6200m) and Back to Camp 1 (5800m)",
+      "Day 14: Camp 1 to Summit Camp (6200m)",
+      "Day 15: Route Opening of Summit",
+      "Day 16: Summit Attemp (7075m)",
+      "Day 17: Summit Camp to Advance base camp (5100m)",
+      "Day 18: Advance Camp to Base Camp at Vasuki Tal (4800m)",
+      "Day 19: Base camp Vasuki tal to Bhojbasa",
+      "Day 20: Bhojbasa to Gangotri",
+      "Day 21: Gangotri to Uttarkashi",
     ],
     inclusions: [
-      "2 Nights accommodation in Harsil/Dharali.",
-      "Professional guide support",
+      "Accommodation on twin Sharing basis Gangotri to Gangotri",
+      "Transport Uttarkshi to Uttarkashi",
       "Trek permits",
-      "All meals during the trek."
+      "All meals during the trek.",
+      "Sleeping bag tents Mattresses Kitchen tent Dining tent toilet tent and all Expedition Equipment",
+      "Professional guide support",
     ],
     gearList: [
       "Woolen cap",
@@ -302,12 +340,12 @@ export const treks: Trek[] = [
       "Waterproof gloves"
     ],
     gallery: [
-      SrikanthImage1,
-      SrikanthImage2,
-      SrikanthImage3,
-      SrikanthImage4
+      SatopanthImage1,
+      SatopanthImage2,
+      SatopanthImage3,
+      SatopanthImage4
     ],
-    itineraryPdf: SrikanthBaseCampItinarary,
+    itineraryPdf: SatopanthItinarary,
   },
   {
     id: "MT SRIKANTH BASE CAMP",
