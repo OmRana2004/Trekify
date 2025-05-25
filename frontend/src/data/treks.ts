@@ -396,10 +396,10 @@ export const treks: Trek[] = [
   },
           // 9
   {
-    id: "MT SRIKANTH BASE CAMP",
-    name: "Mt Srikanth Base Camp Trek",
+    id: "LAMKHAGA PASS TREK",
+    name: "Lamkhaga Pass Trek",
     location: "Uttarakhand",
-    difficulty: "Easy",
+    difficulty: "Hard",
     duration: "5 Days",
     price: 12500,
     image: MtSrikanthBaseCamp,
