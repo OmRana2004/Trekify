@@ -394,6 +394,7 @@ export const treks: Trek[] = [
     ],
     itineraryPdf: DayaraBugyaItinarary,
   },
+          // 9
   {
     id: "MT SRIKANTH BASE CAMP",
     name: "Mt Srikanth Base Camp Trek",
