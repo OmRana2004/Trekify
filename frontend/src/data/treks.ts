@@ -6,6 +6,7 @@ import TunganathChandrashila from "../assets/TunganathChandrashilaTrek/Tunganath
 import GaumukhTapovan from "../assets/GaumukhTapovan/GaumukhTapovan.jpg";
 import Kyarkoti from "../assets/Kyarkoti/Kyarkoti.png";
 import MtSatopanthExpedition from "../assets/SatopanthExpedition/SatopanthExpedition.jpg";
+import DayaraBugyal from "../assets/DayaraBugyalTrek/DayaraBugyal.png";
 import KedartalImage1 from "../assets/KedartalTrek/KedarTal-1.jpg";
 import KedartalImage2 from "../assets/KedartalTrek/KedarTal-2.webp";
 import KedartalImage3 from "../assets/KedartalTrek/KedarTal-3.jpg";
@@ -34,6 +35,10 @@ import SatopanthImage1 from "../assets/SatopanthExpedition/Satopanth1.jpg";
 import SatopanthImage2 from "../assets/SatopanthExpedition/Satopanth2.jpg";
 import SatopanthImage3 from "../assets/SatopanthExpedition/Satopanth3.webp";
 import SatopanthImage4 from "../assets/SatopanthExpedition/Satopanth4.webp";
+import DayaraBugyalImage1 from "../assets/DayaraBugyalTrek/DayaraBugyal1.png";
+import DayaraBugyalImage2 from "../assets/DayaraBugyalTrek/DayaraBugyal2.png";
+import DayaraBugyalImage3 from "../assets/DayaraBugyalTrek/DayaraBugyal3.png";
+import DayaraBugyalImage4 from "../assets/DayaraBugyalTrek/DayaraBugyal4.png";
 // Import PDFs
 import KedarTalItinerary from "../assets/KedartalTrek/KedarTal-Itinerary.pdf";
 import SatTalItinarary from "../assets/SattalTreak/SatTal-Itinerary.pdf";
@@ -42,6 +47,7 @@ import TunganathChandrashilaItinerary from "../assets/TunganathChandrashilaTrek/
 import GaumukhTapovanItinerary from "../assets/GaumukhTapovan/GaumukhTapovan-Itinerary.pdf";
 import KyarkotiItinerary from "../assets/Kyarkoti/Kyarkoti-Itinerary.pdf";
 import SatopanthItinarary from "../assets/SatopanthExpedition/Satopanth-Itinarary.pdf";
+import DayaraBugyaItinarary from "../assets/DayaraBugyalTrek/DayaraBugya-Itinarary.pdf";
 
 export const treks: Trek[] = [
          // 1
@@ -347,29 +353,31 @@ export const treks: Trek[] = [
     ],
     itineraryPdf: SatopanthItinarary,
   },
+                //8
   {
-    id: "MT SRIKANTH BASE CAMP",
-    name: "Mt Srikanth Base Camp Trek",
+    id: "DAYARA BUGYAL TREK",
+    name: "Dayara Bugyal Trek",
     location: "Uttarakhand",
     difficulty: "Easy",
     duration: "5 Days",
-    price: 12500,
-    image: MtSrikanthBaseCamp,
+    price: 12000,
+    image: DayaraBugyal,
     season: "Winter/Summer",
-    description: "It is our constant endeavor to bring to adventure lovers new trails to explore. Mt Srikanth Base Camp trek is one such trail. It starts from the picturesque village of Dharali in Harsil Valley of Uttarkashi District, Uttarakhand, India. The maximum altitude reached is 4533m. It is a 13km trek that takes a trekker along beautiful forests of pine, cedar and alpine meadows. The trail is laden with various species of flowers along the way including the famous Brahma Kamal (white lotus).",
+    description: "Dayara Bugyal, nestled at an impressive altitude of 3,307 meters above sea level, is one of the most breathtaking alpine meadows in the Indian Himalayas. Renowned for its expansive green pastures, gently undulating hills, and serene atmosphere, this high-altitude wonder is a paradise for nature lovers and adventure seekers alike. Stretching as far as the eye can see, Dayara Bugyal offers panoramic views of some of the most majestic Himalayan peaks, including Bandarpunch, Draupadi ka Danda, and Srikanth Peak. The meadow is adorned with patches of wildflowers during the warmer months and tranquil alpine lakes that reflect the clear blue skies above, making it a perfect setting for camping and photography. During winter, this lush green expanse is blanketed in a thick layer of snow, transforming it into a pristine skiing destination. With its gentle slopes and ample open space, Dayara becomes an ideal playground for both amateur and experienced skiers. The snowfall adds a magical charm to the landscape, making winter treks to Dayara a truly enchanting experience. Whether you're seeking solitude in nature, an adventurous escape, or just a peaceful retreat under the stars, Dayara Bugyal offers a unique blend of natural beauty, adventure, and tranquility that leaves every traveler mesmerized.",
 
-    itinerary: [
-      "Day 1: Arrival at Harsil/Dharali",
-      "Day 2: 7km trek to Jhinda Bugyal",
-      "Day 3: :6km to Base Camp and back to camp site",
-      "Day 4: Back to Harsil / Dharali",
-      "Day 5: After breakfast, check out of the hotel."
+    itinerary: [ 
+      "Day 1: Drive from Rishikesh to Barsu",
+      "Day 2: Barsu to Barnala",
+      "Day 3: Barnala to Dayara Bugyal site",
+      "Day 4: Dayara Bugyal",
+      "Day 5: Dayara Bugyal to Rishikesh or Dehradun."
     ],
     inclusions: [
-      "2 Nights accommodation in Harsil/Dharali.",
+      "Accommodation on twin Sharing basis Barsu to Barsu",
       "Professional guide support",
-      "Trek permits",
-      "All meals during the trek."
+      "Sleeping bag tents Mattresses Kitchen tent Dining tent toilet tent",
+      "porters carrying common trek equipment",
+      "All meals Barsu to Barsu"
     ],
     gearList: [
       "Woolen cap",
@@ -379,12 +387,12 @@ export const treks: Trek[] = [
       "Waterproof gloves"
     ],
     gallery: [
-      SrikanthImage1,
-      SrikanthImage2,
-      SrikanthImage3,
-      SrikanthImage4
+      DayaraBugyalImage1,
+      DayaraBugyalImage2,
+      DayaraBugyalImage3,
+      DayaraBugyalImage4
     ],
-    itineraryPdf: SrikanthBaseCampItinarary,
+    itineraryPdf: DayaraBugyaItinarary,
   },
   {
     id: "MT SRIKANTH BASE CAMP",

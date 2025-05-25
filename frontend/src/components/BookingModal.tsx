@@ -63,7 +63,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ trekName, onClose }) => {
         >
           &times;
         </button>
-        <h2 className="text-2xl sm:text-3xl font-bold text-center text-indigo-600 mb-6">Book Your Trek</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold text-center text-indigo-500 mb-6">Book Your Trek</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {renderInput(FaUser, {
@@ -121,7 +121,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ trekName, onClose }) => {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full flex justify-center items-center bg-gradient-to-r from-green-500 to-teal-500 text-white font-semibold py-2 rounded-lg transition duration-300 hover:scale-105 ${
+            className={`w-full flex justify-center items-center bg-gradient-to-r from-green-500 to-teal-500 text-white font-semibold py-2 rounded-lg transition duration-300 hover:scale-105 cursor-pointer ${
               loading ? 'opacity-60 cursor-not-allowed' : ''
             }`}
           >
@@ -133,7 +133,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ trekName, onClose }) => {
           </button>
         </form>
       </div>
-      <ToastContainer position="top-center" autoClose={1500} />
+      <ToastContainer position="top-center" autoClose={2500} />
     </div>
   );
 };
