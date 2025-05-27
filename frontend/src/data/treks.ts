@@ -9,6 +9,7 @@ import MtSatopanthExpedition from "../assets/SatopanthExpedition/SatopanthExpedi
 import DayaraBugyal from "../assets/DayaraBugyalTrek/DayaraBugyal.png";
 import LamkhagaPass from "../assets/LamkhagaPassTrek/LamkhagaPass.jpg";
 import MountRudugaira from "../assets/MountRudugaira/MountRudugaira.webp";
+import KalindiPass from "../assets/KalindiPassTrek/KalindiPass.jpg";
 
 import KedartalImage1 from "../assets/KedartalTrek/KedarTal-1.jpg";
 import KedartalImage2 from "../assets/KedartalTrek/KedarTal-2.webp";
@@ -50,6 +51,10 @@ import MountRudugairaImage1 from "../assets/MountRudugaira/MountRudugaira1.webp"
 import MountRudugairaImage2 from "../assets/MountRudugaira/MountRudugaira2.webp";
 import MountRudugairaImage3 from "../assets/MountRudugaira/MountRudugaira3.webp";
 import MountRudugairaImage4 from "../assets/MountRudugaira/MountRudugaira4.jpeg";
+import KalindiPassImage1 from "../assets/KalindiPassTrek/KalindiPass1.jpg";
+import KalindiPassImage2 from "../assets/KalindiPassTrek/KalindiPass2.jpg";
+import KalindiPassImage3 from "../assets/KalindiPassTrek/KalindiPass3.jpg";
+import KalindiPassImage4 from "../assets/KalindiPassTrek/KalindiPass4.jpeg";
 
 // Import PDFs
 import KedarTalItinerary from "../assets/KedartalTrek/KedarTal-Itinerary.pdf";
@@ -62,6 +67,7 @@ import SatopanthItinarary from "../assets/SatopanthExpedition/Satopanth-Itinarar
 import DayaraBugyaItinarary from "../assets/DayaraBugyalTrek/DayaraBugya-Itinarary.pdf";
 import LamkhagaPassItinarary from "../assets/LamkhagaPassTrek/LamkhagaPass-Itinarary.pdf";
 import MountRudugairaItinarary from "../assets/LamkhagaPassTrek/LamkhagaPass-Itinarary.pdf";
+import KalindiPassItinarary from "../assets/KalindiPassTrek/KalindiPass-Itinarary.pdf";
 
 
 export const treks: Trek[] = [
@@ -499,27 +505,35 @@ export const treks: Trek[] = [
       MountRudugairaImage4
     ],
     itineraryPdf: MountRudugairaItinarary,
-  },
+  },  
+                // 11
   {
-    id: "MT SRIKANTH BASE CAMP",
-    name: "Mt Srikanth Base Camp Trek",
+    id: "KALINDI PASS TREK",
+    name: "Kalindi Pass Trek", // 
     location: "Uttarakhand",
-    difficulty: "Easy",
-    duration: "5 Days",
-    price: 12500,
-    image: MtSrikanthBaseCamp,
+    difficulty: "Hard",
+    duration: "12 Days",
+    price: 115000,
+    image: KalindiPass,
     season: "Winter/Summer",
-    description: "It is our constant endeavor to bring to adventure lovers new trails to explore. Mt Srikanth Base Camp trek is one such trail. It starts from the picturesque village of Dharali in Harsil Valley of Uttarkashi District, Uttarakhand, India. The maximum altitude reached is 4533m. It is a 13km trek that takes a trekker along beautiful forests of pine, cedar and alpine meadows. The trail is laden with various species of flowers along the way including the famous Brahma Kamal (white lotus).",
+    description: "The Kalindi Pass trek is one of the most thrilling and high-altitude expeditions in the Indian Himalayas, offering an extraordinary journey through the remote and rugged terrain of the Garhwal region. Spanning over 90 kilometers, the trek connects the two sacred towns of Gangotri and Badrinath, taking you through a dramatic landscape of creaking glaciers, vast snowfields, shifting moraines, and high-altitude desert. At its pinnacle, the Kalindi Pass stands tall at 5,948 meters, offering jaw-dropping panoramic views of some of the most iconic Himalayan peaks, including Shivling, Bhagirathi I, II & III, Vasuki Parbat, Chandraparbat, and Satopanth. The route passes through surreal campsites like Vasuki Tal and Arwa Tal, with frequent sightings of high-altitude wildlife and rare alpine flora. Due to its technical difficulty, unpredictable weather, and need for glacier travel, this trek is recommended only for experienced trekkers with prior exposure to high altitudes. For those seeking the ultimate test of endurance and a raw, untouched Himalayan experience, the Kalindi Pass trek stands as a once-in-a-lifetime adventure.",
 
     itinerary: [
-      "Day 1: Arrival at Harsil/Dharali",
-      "Day 2: 7km trek to Jhinda Bugyal",
-      "Day 3: :6km to Base Camp and back to camp site",
-      "Day 4: Back to Harsil / Dharali",
-      "Day 5: After breakfast, check out of the hotel."
+      "Day 1: Arrive at Gangotri",
+      "Day 2: GANGOTRI (for acclimatization)",
+      "Day 3:Gangotri to Bhojbasa 14km Trek",
+      "Day 4: Bhojbasa to Nandanvan 9 km Trek",
+      "Day 5: Nandanvan to Vasuki Tal. 4840m",
+      "Day 6: Vasuki Tal Acclimatisation day.",
+      "Day 7: Vasuki Tal to Khara Patthar 6 km",
+      "Day 8: NKhara Pathar to Sweta Glacier",
+      "Day 9: Sweta Glacier to Kalindikhal Base (5500m)",
+      "Day 10: Kalindikhal base to Kalindi Pass and Raj Paravat",
+      "Day 11: Raj Parav to Arwatal 13km Trek",
+      "Day 12: Arwatal to Badrinath",
     ],
     inclusions: [
-      "2 Nights accommodation in Harsil/Dharali.",
+      "All camping equipment such as sleeping bags, mattresses, kitchen tent, dining tent and toilet tent.",
       "Professional guide support",
       "Trek permits",
       "All meals during the trek."
@@ -532,12 +546,12 @@ export const treks: Trek[] = [
       "Waterproof gloves"
     ],
     gallery: [
-      SrikanthImage1,
-      SrikanthImage2,
-      SrikanthImage3,
-      SrikanthImage4
+      KalindiPassImage1,
+      KalindiPassImage2,
+      KalindiPassImage3,
+      KalindiPassImage4
     ],
-    itineraryPdf: SrikanthBaseCampItinarary,
+    itineraryPdf: KalindiPassItinarary,
   },
   {
     id: "MT SRIKANTH BASE CAMP",
