@@ -7,6 +7,8 @@ import GaumukhTapovan from "../assets/GaumukhTapovan/GaumukhTapovan.jpg";
 import Kyarkoti from "../assets/Kyarkoti/Kyarkoti.png";
 import MtSatopanthExpedition from "../assets/SatopanthExpedition/SatopanthExpedition.jpg";
 import DayaraBugyal from "../assets/DayaraBugyalTrek/DayaraBugyal.png";
+import LamkhagaPass from "../assets/LamkhagaPassTrek/LamkhagaPass.jpg";
+
 import KedartalImage1 from "../assets/KedartalTrek/KedarTal-1.jpg";
 import KedartalImage2 from "../assets/KedartalTrek/KedarTal-2.webp";
 import KedartalImage3 from "../assets/KedartalTrek/KedarTal-3.jpg";
@@ -39,6 +41,11 @@ import DayaraBugyalImage1 from "../assets/DayaraBugyalTrek/DayaraBugyal1.png";
 import DayaraBugyalImage2 from "../assets/DayaraBugyalTrek/DayaraBugyal2.png";
 import DayaraBugyalImage3 from "../assets/DayaraBugyalTrek/DayaraBugyal3.png";
 import DayaraBugyalImage4 from "../assets/DayaraBugyalTrek/DayaraBugyal4.png";
+import LamkhagaPassImage1 from "../assets/LamkhagaPassTrek/LamkhagaPass1.png";
+import LamkhagaPassImage2 from "../assets/LamkhagaPassTrek/LamkhagaPass2.jpg";
+import LamkhagaPassImage3 from "../assets/LamkhagaPassTrek/LamkhagaPass3.jpg";
+import LamkhagaPassImage4 from "../assets/LamkhagaPassTrek/LamkhagaPass4 .png";
+
 // Import PDFs
 import KedarTalItinerary from "../assets/KedartalTrek/KedarTal-Itinerary.pdf";
 import SatTalItinarary from "../assets/SattalTreak/SatTal-Itinerary.pdf";
@@ -48,6 +55,8 @@ import GaumukhTapovanItinerary from "../assets/GaumukhTapovan/GaumukhTapovan-Iti
 import KyarkotiItinerary from "../assets/Kyarkoti/Kyarkoti-Itinerary.pdf";
 import SatopanthItinarary from "../assets/SatopanthExpedition/Satopanth-Itinarary.pdf";
 import DayaraBugyaItinarary from "../assets/DayaraBugyalTrek/DayaraBugya-Itinarary.pdf";
+import LamkhagaPassItinarary from "../assets/LamkhagaPassTrek/LamkhagaPass-Itinarary.pdf";
+
 
 export const treks: Trek[] = [
          // 1
@@ -400,18 +409,24 @@ export const treks: Trek[] = [
     name: "Lamkhaga Pass Trek",
     location: "Uttarakhand",
     difficulty: "Hard",
-    duration: "5 Days",
-    price: 12500,
-    image: MtSrikanthBaseCamp,
+    duration: "10 Days",
+    price: 8000,
+    image: LamkhagaPass,
     season: "Winter/Summer",
-    description: "It is our constant endeavor to bring to adventure lovers new trails to explore. Mt Srikanth Base Camp trek is one such trail. It starts from the picturesque village of Dharali in Harsil Valley of Uttarkashi District, Uttarakhand, India. The maximum altitude reached is 4533m. It is a 13km trek that takes a trekker along beautiful forests of pine, cedar and alpine meadows. The trail is laden with various species of flowers along the way including the famous Brahma Kamal (white lotus).",
+    description: "Experience the thrill of crossing from Uttarakhand to Himachal Pradesh on the exhilarating Lamkhaga Pass trek—a challenging yet awe-inspiring 10-day journey through some of the most remote and scenic landscapes in the Indian Himalayas. Beginning from the peaceful village of Harsil in Uttarkashi, the trail takes you through the stunning Kyarkoti valley, past alpine forests of cedar, pine, and birch, gurgling mountain streams, and the striking emerald-green Kyarkoti Lake. As you ascend toward the majestic Lamkhaga Pass, located at an altitude of around 5,280 meters, be rewarded with panoramic views of Mt. Srikanth (6,133m) and other snow-draped, unnamed Himalayan peaks. Along the way, encounter flocks of sheep led by shepherds from Bagori village—renowned for their traditional woolens—grazing in the high meadows. The trail culminates in the idyllic village of Chitkul in the Sangla Valley of Himachal Pradesh, leaving you with a deep sense of accomplishment and memories of untouched wilderness. With the support of our experienced and certified guides, friendly porters, warm tents, and freshly prepared vegetarian meals, your trek will be both safe and fulfilling. For those seeking more, the journey can be extended to explore the enchanting Sangla and Kalpa valleys, known for their rich culture, apple orchards, and stunning views of the Kinnaur Kailash range.",
 
     itinerary: [
       "Day 1: Arrival at Harsil/Dharali",
-      "Day 2: 7km trek to Jhinda Bugyal",
-      "Day 3: :6km to Base Camp and back to camp site",
-      "Day 4: Back to Harsil / Dharali",
-      "Day 5: After breakfast, check out of the hotel."
+      "Day 2: Harsil to Gangnani/Lower Kyarkoti - 8km trek",
+      "Day 3: Gangnani/Lower Kyarkoti to Upper Kyarkoti - 7km trek",
+      "Day 4: Upper Kyarkoti to Lamkhaga Pass Base Camp",
+      "Day 5: Acclimatization, Today we will acclimatize by gaining some height and then returning to base camp",
+      "Day 6: Base Camp to Gundar via Lamkhaga Pass",
+      "Day 7: Gundar to Dumti, Our descent to Sangla Valley begins. Today we descend to Dumti.",
+      "Day 8: Dumti to Rani Kanda.",
+      "Day 9: Rani Kanda to Chitkul",
+      "Day 10: Depart from Chitkul",
+
     ],
     inclusions: [
       "2 Nights accommodation in Harsil/Dharali.",
@@ -427,12 +442,12 @@ export const treks: Trek[] = [
       "Waterproof gloves"
     ],
     gallery: [
-      SrikanthImage1,
-      SrikanthImage2,
-      SrikanthImage3,
-      SrikanthImage4
+      LamkhagaPassImage1,
+      LamkhagaPassImage2,
+      LamkhagaPassImage3,
+      LamkhagaPassImage4
     ],
-    itineraryPdf: SrikanthBaseCampItinarary,
+    itineraryPdf: LamkhagaPassItinarary,
   },
   {
     id: "MT SRIKANTH BASE CAMP",
