@@ -8,6 +8,7 @@ import Kyarkoti from "../assets/Kyarkoti/Kyarkoti.png";
 import MtSatopanthExpedition from "../assets/SatopanthExpedition/SatopanthExpedition.jpg";
 import DayaraBugyal from "../assets/DayaraBugyalTrek/DayaraBugyal.png";
 import LamkhagaPass from "../assets/LamkhagaPassTrek/LamkhagaPass.jpg";
+import MountRudugaira from "../assets/MountRudugaira/MountRudugaira.webp";
 
 import KedartalImage1 from "../assets/KedartalTrek/KedarTal-1.jpg";
 import KedartalImage2 from "../assets/KedartalTrek/KedarTal-2.webp";
@@ -45,6 +46,10 @@ import LamkhagaPassImage1 from "../assets/LamkhagaPassTrek/LamkhagaPass1.png";
 import LamkhagaPassImage2 from "../assets/LamkhagaPassTrek/LamkhagaPass2.jpg";
 import LamkhagaPassImage3 from "../assets/LamkhagaPassTrek/LamkhagaPass3.jpg";
 import LamkhagaPassImage4 from "../assets/LamkhagaPassTrek/LamkhagaPass4 .png";
+import MountRudugairaImage1 from "../assets/MountRudugaira/MountRudugaira1.webp";
+import MountRudugairaImage2 from "../assets/MountRudugaira/MountRudugaira2.webp";
+import MountRudugairaImage3 from "../assets/MountRudugaira/MountRudugaira3.webp";
+import MountRudugairaImage4 from "../assets/MountRudugaira/MountRudugaira4.jpeg";
 
 // Import PDFs
 import KedarTalItinerary from "../assets/KedartalTrek/KedarTal-Itinerary.pdf";
@@ -56,6 +61,7 @@ import KyarkotiItinerary from "../assets/Kyarkoti/Kyarkoti-Itinerary.pdf";
 import SatopanthItinarary from "../assets/SatopanthExpedition/Satopanth-Itinarary.pdf";
 import DayaraBugyaItinarary from "../assets/DayaraBugyalTrek/DayaraBugya-Itinarary.pdf";
 import LamkhagaPassItinarary from "../assets/LamkhagaPassTrek/LamkhagaPass-Itinarary.pdf";
+import MountRudugairaItinarary from "../assets/LamkhagaPassTrek/LamkhagaPass-Itinarary.pdf";
 
 
 export const treks: Trek[] = [
@@ -449,26 +455,32 @@ export const treks: Trek[] = [
     ],
     itineraryPdf: LamkhagaPassItinarary,
   },
+                // 10
   {
-    id: "MT SRIKANTH BASE CAMP",
-    name: "Mt Srikanth Base Camp Trek",
+    id: "MOUNT RUDUGAIRA EXPEDITION",
+    name: "Mount Rudugaira Expedition",
     location: "Uttarakhand",
-    difficulty: "Easy",
-    duration: "5 Days",
-    price: 12500,
-    image: MtSrikanthBaseCamp,
+    difficulty: "Moderate",
+    duration: "10 Days",
+    price: 28500,
+    image: MountRudugaira,
     season: "Winter/Summer",
-    description: "It is our constant endeavor to bring to adventure lovers new trails to explore. Mt Srikanth Base Camp trek is one such trail. It starts from the picturesque village of Dharali in Harsil Valley of Uttarkashi District, Uttarakhand, India. The maximum altitude reached is 4533m. It is a 13km trek that takes a trekker along beautiful forests of pine, cedar and alpine meadows. The trail is laden with various species of flowers along the way including the famous Brahma Kamal (white lotus).",
+    description: "Mt. Rudugaira, standing at an altitude of around 5,819 meters, is an excellent trekking peak nestled in the Gangotri region of Uttarakhand, offering the perfect stepping stone for trekkers aiming to venture into mountaineering. The expedition begins from the sacred town of Gangotri and follows a scenic trail along the Rudra Ganga river, winding through dense birch and pine forests, alpine meadows, and glacial moraines. As you ascend, you'll be rewarded with stunning views of surrounding peaks like Gangotri I, II, and III, Mt. Auden’s Col, and Mt. Srikanth. The route to Base Camp is a visual delight, with dramatic landscapes and high-altitude terrain that gradually acclimatizes climbers for the final summit push. While the climb demands physical fitness and mental endurance, it is relatively accessible for those with prior trekking experience, making it a great choice for those looking to transition into technical climbs. With the support of experienced guides, high-altitude camping, and well-managed logistics, the Mt. Rudugaira expedition offers an unforgettable introduction to the world of Himalayan mountaineering.",
 
     itinerary: [
-      "Day 1: Arrival at Harsil/Dharali",
-      "Day 2: 7km trek to Jhinda Bugyal",
-      "Day 3: :6km to Base Camp and back to camp site",
-      "Day 4: Back to Harsil / Dharali",
-      "Day 5: After breakfast, check out of the hotel."
+      "Day 1: Gangotri. Witness the Ganga Arati at the banks of the Bhagirathi River.",
+      "Day 2: Gangotri to Nala Camp",
+      "Day 3: Nala Camp to Rudugaira Base Camp",
+      "Day 4: Rudugaira Base camp rest day",
+      "Day 5: Load ferry from Base Camp to Summit Camp.",
+      "Day 6: Set up Camp at Summit Camp",
+      "Day 7: Summit Attempt and return to Summit Camp",
+      "Day 8: Back to Base Camp",
+      "Day 9: Base Camp To gangotri",
+      "Day 10: After Breakfast end of our service.",
     ],
     inclusions: [
-      "2 Nights accommodation in Harsil/Dharali.",
+      "Sleeping bag tents Mattresses Kitchen tent Dining tent toilet tent All Expedition Equipment",
       "Professional guide support",
       "Trek permits",
       "All meals during the trek."
@@ -481,12 +493,12 @@ export const treks: Trek[] = [
       "Waterproof gloves"
     ],
     gallery: [
-      SrikanthImage1,
-      SrikanthImage2,
-      SrikanthImage3,
-      SrikanthImage4
+      MountRudugairaImage1,
+      MountRudugairaImage2,
+      MountRudugairaImage3,
+      MountRudugairaImage4
     ],
-    itineraryPdf: SrikanthBaseCampItinarary,
+    itineraryPdf: MountRudugairaItinarary,
   },
   {
     id: "MT SRIKANTH BASE CAMP",
