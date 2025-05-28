@@ -10,6 +10,7 @@ import DayaraBugyal from "../assets/DayaraBugyalTrek/DayaraBugyal.png";
 import LamkhagaPass from "../assets/LamkhagaPassTrek/LamkhagaPass.jpg";
 import MountRudugaira from "../assets/MountRudugaira/MountRudugaira.webp";
 import KalindiPass from "../assets/KalindiPassTrek/KalindiPass.jpg";
+import VasukiTal from "../assets/VasukiTal/VasukiTal.png";
 
 import KedartalImage1 from "../assets/KedartalTrek/KedarTal-1.jpg";
 import KedartalImage2 from "../assets/KedartalTrek/KedarTal-2.webp";
@@ -55,6 +56,10 @@ import KalindiPassImage1 from "../assets/KalindiPassTrek/KalindiPass1.jpg";
 import KalindiPassImage2 from "../assets/KalindiPassTrek/KalindiPass2.jpg";
 import KalindiPassImage3 from "../assets/KalindiPassTrek/KalindiPass3.jpg";
 import KalindiPassImage4 from "../assets/KalindiPassTrek/KalindiPass4.jpeg";
+import VasukiTalImage1 from "../assets/VasukiTal/VasukiTal1.png";
+import VasukiTalImage2 from "../assets/VasukiTal/VasukiTal2.png";
+import VasukiTalImage3 from "../assets/VasukiTal/VasukiTal3.png";
+import VasukiTalImage4 from "../assets/VasukiTal/VasukiTal4.png";
 
 // Import PDFs
 import KedarTalItinerary from "../assets/KedartalTrek/KedarTal-Itinerary.pdf";
@@ -68,6 +73,7 @@ import DayaraBugyaItinarary from "../assets/DayaraBugyalTrek/DayaraBugya-Itinara
 import LamkhagaPassItinarary from "../assets/LamkhagaPassTrek/LamkhagaPass-Itinarary.pdf";
 import MountRudugairaItinarary from "../assets/LamkhagaPassTrek/LamkhagaPass-Itinarary.pdf";
 import KalindiPassItinarary from "../assets/KalindiPassTrek/KalindiPass-Itinarary.pdf";
+import VasukiTalItinarary from "../assets/VasukiTal/VasukiTal-Itinarary.pdf";
 
 
 export const treks: Trek[] = [
@@ -553,26 +559,30 @@ export const treks: Trek[] = [
     ],
     itineraryPdf: KalindiPassItinarary,
   },
+                // 12
   {
-    id: "MT SRIKANTH BASE CAMP",
-    name: "Mt Srikanth Base Camp Trek",
+    id: "VASUKI TAL TREK",
+    name: "Vasuki Tal Trek",
     location: "Uttarakhand",
     difficulty: "Easy",
-    duration: "5 Days",
+    duration: "8 Days",
     price: 12500,
-    image: MtSrikanthBaseCamp,
+    image: VasukiTal,
     season: "Winter/Summer",
-    description: "It is our constant endeavor to bring to adventure lovers new trails to explore. Mt Srikanth Base Camp trek is one such trail. It starts from the picturesque village of Dharali in Harsil Valley of Uttarkashi District, Uttarakhand, India. The maximum altitude reached is 4533m. It is a 13km trek that takes a trekker along beautiful forests of pine, cedar and alpine meadows. The trail is laden with various species of flowers along the way including the famous Brahma Kamal (white lotus).",
+    description: "The Vasuki Tal via Tapovan trek is a spectacular high-altitude expedition in the Garhwal Himalayas that combines spiritual significance, alpine beauty, and raw Himalayan adventure. Beginning from Gangotri, the trail passes through the revered Gaumukh glacier—the origin of the Ganges—and ascends to the serene meadows of Tapovan, known for their sweeping views and sacred atmosphere. As you continue, the terrain becomes more rugged, with icy glaciers, rocky moraines, and challenging ascents leading to the glacial lake of Vasuki Tal at 4,800 meters. The trek offers close-up views of towering Himalayan giants like Mount Shivling, Bhagirathi I, II, and III, Thalay Sagar, and Meru, attracting not only trekkers but also mountaineers and seekers alike. With its blend of spiritual depth, stunning landscapes, and technical sections, this trek is ideal for experienced trekkers seeking a rewarding challenge in the heart of the Indian Himalayas.",
 
     itinerary: [
-      "Day 1: Arrival at Harsil/Dharali",
-      "Day 2: 7km trek to Jhinda Bugyal",
-      "Day 3: :6km to Base Camp and back to camp site",
-      "Day 4: Back to Harsil / Dharali",
-      "Day 5: After breakfast, check out of the hotel."
+      "Day 1: Dehradun to Gangotri",
+      "Day 2: From Gangotri towards Bhojwasa via Chirwasa",
+      "Day 3: From Bhojwassa to Gomukh to Tapovan",
+      "Day 4: From Tapovan towards Nandanvan",
+      "Day 5: From Nandanvan towards Vasuki Tal and later towards Nandanvan",
+      "Day 6: From Nandanvan towards Vasuki Tal and later towards Nandanvan",
+      "Day 7: From Nandanvan towards Vasuki Tal and later towards Nandanvan",
+      "Day 8: From Nandanvan towards Vasuki Tal and later towards Nandanvan",
     ],
     inclusions: [
-      "2 Nights accommodation in Harsil/Dharali.",
+      "Accommodation on twin Sharing basis Gangotri to Gangotri",
       "Professional guide support",
       "Trek permits",
       "All meals during the trek."
@@ -585,11 +595,11 @@ export const treks: Trek[] = [
       "Waterproof gloves"
     ],
     gallery: [
-      SrikanthImage1,
-      SrikanthImage2,
-      SrikanthImage3,
-      SrikanthImage4
+      VasukiTalImage1,
+      VasukiTalImage2,
+      VasukiTalImage3,
+      VasukiTalImage4
     ],
-    itineraryPdf: SrikanthBaseCampItinarary,
+    itineraryPdf: VasukiTalItinarary,
   },
 ];
