@@ -45,10 +45,10 @@ const Contact = () => {
                   Uttarakhand
                 </li>
                 <li>
-                  📞 <strong>Phone:</strong> +91 76687 62035
+                  📞 <strong>Phone:</strong> +917668762035
                 </li>
                 <li>
-                  📱 <strong>WhatsApp:</strong> 76687 62035 (Keshav Singh Panwar)
+                  📱 <strong>WhatsApp:</strong> 7668762035 (Keshav Singh Panwar)
                 </li>
                 <li>
                   ✉️ <strong>Email:</strong> info@Trekify.com
@@ -132,7 +132,7 @@ const Contact = () => {
 
                   <button
                     type="submit"
-                    className="bg-green-600 text-white font-semibold px-6 py-3 rounded-md hover:bg-green-700 hover:scale-[1.02] transition-all duration-300 w-full"
+                    className="cursor-pointer bg-green-600 text-white font-semibold px-6 py-3 rounded-md hover:bg-green-700 hover:scale-[1.02] transition-all duration-300 w-full"
                   >
                     ✉️ Send Message
                   </button>

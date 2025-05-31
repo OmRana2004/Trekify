@@ -63,7 +63,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ trekName, onClose }) => {
         >
           &times;
         </button>
-        <h2 className="text-2xl sm:text-3xl font-bold text-center text-indigo-500 mb-6">Book Your Trek</h2>
+        <h2 className="cursor-pointer text-2xl sm:text-3xl font-bold text-center text-indigo-500 mb-6">Book Your Trek</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {renderInput(FaUser, {
