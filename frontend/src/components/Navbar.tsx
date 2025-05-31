@@ -217,4 +217,5 @@ const Navbar: React.FC = () => {
 
 export default Navbar;
 // Compare this snippet from frontend/src/components/Navbar.tsx:
-// import React, { useState, useEffect, useRef } from "react";
+// import React, { useState, useEffect, useRef } from "react";./
+
