@@ -97,13 +97,17 @@ const TrekDetail = () => {
         </p>
         {trek.itineraryPdf && (
           <div data-aos="fade-up" data-aos-delay="400">
-            <a
-              href={trek.itineraryPdf}
-              download={`${trek.name}-Itinerary.pdf`}
-              className="inline-flex items-center mt-6 px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-md shadow-md hover:bg-green-700 transition-all duration-300"
-            >
-              📄 Download Itinerary PDF
-            </a>
+           <a
+  href={trek.itineraryPdf}
+  download={`${trek.name}-Itinerary.pdf`}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={`Download itinerary PDF for ${trek.name}`}
+  className="inline-flex items-center mt-6 px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-md shadow-md transition-all duration-300 hover:from-green-600 hover:to-green-700 hover:shadow-xl hover:shadow-green-500/50"
+>
+  📄 Download Itinerary PDF
+</a>
+
           </div>
         )}
       </div>
