@@ -1,7 +1,8 @@
 import { Trek } from "../types/Trek";
 import Kedartal from "../assets/KedartalTrek/KedarTal.jpg";
 import Sattal from "../assets/SattalTreak/SatTal.webp";
-import MtSrikanthBaseCamp from "../assets/Srikanth/Srikanth-Base-Camp.jpg";
+import MtSrikanthBaseCamVideo from "../assets/Srikanth/MtSrikanth.mp4";
+import MtSrikanthBaseCam from "../assets/Srikanth/Srikanth-Base-Camp.jpg";
 import TunganathChandrashila from "../assets/TunganathChandrashilaTrek/TunganathChandrashila.webp";
 import GaumukhTapovan from "../assets/GaumukhTapovan/GaumukhTapovan.jpg";
 import Kyarkoti from "../assets/Kyarkoti/Kyarkoti.png";
@@ -167,7 +168,8 @@ export const treks: Trek[] = [
     difficulty: "Easy",
     duration: "5 Days",
     price: 12500,
-    image: MtSrikanthBaseCamp,
+    image: MtSrikanthBaseCam ,
+    video:MtSrikanthBaseCamVideo,
     season: "Winter/Summer",
     description: "It is our constant endeavor to bring to adventure lovers new trails to explore. Mt Srikanth Base Camp trek is one such trail. It starts from the picturesque village of Dharali in Harsil Valley of Uttarkashi District, Uttarakhand, India. The maximum altitude reached is 4533m. It is a 13km trek that takes a trekker along beautiful forests of pine, cedar and alpine meadows. The trail is laden with various species of flowers along the way including the famous Brahma Kamal (white lotus).",
 
