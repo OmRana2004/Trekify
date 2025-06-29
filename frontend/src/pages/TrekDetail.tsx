@@ -61,17 +61,54 @@ const TrekDetail = () => {
       </nav>
 
       {/* Trek Banner */}
-      <div
-        data-aos="fade-up"
-        className="relative w-full h-[350px] md:h-[450px] rounded-lg overflow-hidden shadow-lg"
-      >
-        <img
-          loading="lazy"
-          src={trek.image}
-          alt={`Scenic view of ${trek.name}`}
-          className="absolute inset-0 w-full h-full object-cover object-center"
-        />
-      </div>
+      {/* Trek Banner with Video Only */}
+<div className="relative w-full">
+  {/* Full-width video only on desktop */}
+  <div
+    data-aos="fade-up"
+    className="
+      relative 
+      w-full 
+      h-[350px] sm:h-[450px] lg:h-[600px] xl:h-[700px]
+      overflow-hidden shadow-lg 
+      rounded-lg lg:rounded-none 
+      lg:w-screen lg:left-1/2 lg:-translate-x-1/2 lg:relative
+    "
+  >
+    {/* Background Video */}
+    {trek.video ? (
+    <video
+      className="absolute inset-0 w-full h-full object-cover object-center"
+      src={trek.video}
+      autoPlay
+      muted
+      loop
+      playsInline
+    >
+      Your browser does not support the video tag.
+    </video>
+    ) : (
+       <img
+        src={trek.image}
+        alt={`Scenic view of ${trek.name}`}
+        className="absolute inset-0 w-full h-full object-cover object-center"
+        loading="lazy"
+      />
+    )}
+    
+
+    {/* Optional dark overlay */}
+    <div className="absolute inset-0 bg-black/40 z-10" />
+
+    {/* Centered Trek Title */}
+    <div className="absolute inset-0 z-20 flex items-center justify-center px-4 text-center">
+      <h2 className="text-white text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)] animate-fadeInUp">
+        {trek.name}
+      </h2>
+    </div>
+  </div>
+</div>
+
 
       {/* Trek Info */}
       <div className="mt-8 space-y-6">
