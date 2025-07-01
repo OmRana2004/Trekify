@@ -132,4 +132,4 @@ const About = () => {
 
 export default About;//
 // This code defines an About page for a trekking platform called Trekify.
-// It includes a mission statement, information about the founders, and uses Tailwind CSS for styling
+// It includes a mission statement, information about the founders, and uses Tailwind CS
