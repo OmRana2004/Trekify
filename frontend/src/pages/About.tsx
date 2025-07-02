@@ -131,4 +131,4 @@ const About = () => {
 };
 
 export default About;//
-//Code is nice untill now, 
+//Code is nice 
