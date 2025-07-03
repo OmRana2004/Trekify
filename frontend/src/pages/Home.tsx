@@ -324,3 +324,5 @@ const Home = () => {
 };
 
 export default Home;
+// add some important comments here
+// This Home component serves as the main landing page for the Trekify application.
