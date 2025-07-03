@@ -325,4 +325,4 @@ const Home = () => {
 
 export default Home;
 // add some important comments here
-// This Home component serves 
+// This Home 
