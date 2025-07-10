@@ -5,7 +5,7 @@ import MtSrikanthBaseCamVideo from "../assets/Srikanth/MtSrikanth.mp4";
 import MtSrikanthBaseCam from "../assets/Srikanth/Srikanth-Base-Camp.jpg";
 import TunganathChandrashila from "../assets/TunganathChandrashilaTrek/TunganathChandrashila.webp";
 import GaumukhTapovan from "../assets/GaumukhTapovan/GaumukhTapovan.jpg";
-import GaumukhTapovanVideo from "../assets/GaumukhTapovan/tapovan.mp4";
+import GaumukhTapovanVideo from "../../public/tapovan.mp4"
 import Kyarkoti from "../assets/Kyarkoti/Kyarkoti.png";
 import MtSatopanthExpedition from "../assets/SatopanthExpedition/SatopanthExpedition.jpg";
 import DayaraBugyal from "../assets/DayaraBugyalTrek/DayaraBugyal.png";
