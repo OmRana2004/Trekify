@@ -51,4 +51,8 @@ export default tseslint.config({
     ...reactDom.configs.recommended.rules,
   },
 })
+
+// get int to reduces a code 
+
+
 ```
